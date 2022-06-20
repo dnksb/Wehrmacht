@@ -1,5 +1,6 @@
 #pragma once
 #include "day_options.h"
+#include "settings.h"
 #include <Windows.h>
 namespace Wehrmacht {
 
@@ -214,6 +215,8 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 	day.ShowDialog();
 }
 private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
+	settings window;
+	window.ShowDialog();
 }
 };
 }
