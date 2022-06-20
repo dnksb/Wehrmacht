@@ -125,6 +125,9 @@
     <ClInclude Include="day_options.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="InputNameSolder.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="main_menu.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -135,6 +138,9 @@
   <ItemGroup>
     <EmbeddedResource Include="day_options.resx">
       <DependentUpon>day_options.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InputNameSolder.resx">
+      <DependentUpon>InputNameSolder.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="main_menu.resx">
       <DependentUpon>main_menu.h</DependentUpon>

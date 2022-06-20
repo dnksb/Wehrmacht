@@ -29,5 +29,8 @@
     <ClInclude Include="settings.h">
       <Filter>Исходные файлы</Filter>
     </ClInclude>
+    <ClInclude Include="InputNameSolder.h">
+      <Filter>Исходные файлы</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -65,7 +65,7 @@ namespace Wehrmacht {
 			// dataGridView1
 			// 
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Location = System::Drawing::Point(12, 13);
+			this->dataGridView1->Location = System::Drawing::Point(13, 13);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->Size = System::Drawing::Size(543, 536);
 			this->dataGridView1->TabIndex = 1;
@@ -108,6 +108,7 @@ namespace Wehrmacht {
 			this->button3->TabIndex = 9;
 			this->button3->Text = L"сохранить расписание";
 			this->button3->UseVisualStyleBackColor = true;
+			this->button3->Click += gcnew System::EventHandler(this, &day_options::button3_Click);
 			// 
 			// day_options
 			// 
@@ -127,10 +128,16 @@ namespace Wehrmacht {
 		}
 #pragma endregion
 	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+
 	}
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+
 	}
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+
+}
+private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+
 }
 };
 }
