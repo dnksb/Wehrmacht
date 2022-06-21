@@ -18,6 +18,9 @@
     <ClCompile Include="main_menu.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="AddNaryad.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main_menu.h">
@@ -30,6 +33,12 @@
       <Filter>Исходные файлы</Filter>
     </ClInclude>
     <ClInclude Include="InputNameSolder.h">
+      <Filter>Исходные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="InputDay.h">
+      <Filter>Исходные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="AddNaryad.h">
       <Filter>Исходные файлы</Filter>
     </ClInclude>
   </ItemGroup>

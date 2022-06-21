@@ -2,6 +2,7 @@
 #include "day_options.h"
 #include "settings.h"
 #include "InputNameSolder.h"
+#include "InputDay.h"
 #include <Windows.h>
 
 namespace Wehrmacht {
@@ -45,10 +46,10 @@ namespace Wehrmacht {
 	private: System::Windows::Forms::Button^ button4;
 	private: System::Windows::Forms::Button^ button3;
 	private: System::Windows::Forms::Button^ button5;
-	private: System::Windows::Forms::Label^ label1;
-	private: System::Windows::Forms::NumericUpDown^ numericUpDown1;
-	private: System::Windows::Forms::NumericUpDown^ numericUpDown2;
-	private: System::Windows::Forms::Label^ label2;
+
+
+
+
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
 
 
@@ -69,19 +70,13 @@ namespace Wehrmacht {
 		{
 			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->button5 = (gcnew System::Windows::Forms::Button());
-			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->numericUpDown1 = (gcnew System::Windows::Forms::NumericUpDown());
-			this->numericUpDown2 = (gcnew System::Windows::Forms::NumericUpDown());
-			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown1))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown2))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// dataGridView1
@@ -93,10 +88,19 @@ namespace Wehrmacht {
 			this->dataGridView1->Size = System::Drawing::Size(543, 536);
 			this->dataGridView1->TabIndex = 0;
 			// 
+			// Column1
+			// 
+			dataGridViewCellStyle1->BackColor = System::Drawing::Color::White;
+			this->Column1->DefaultCellStyle = dataGridViewCellStyle1;
+			this->Column1->HeaderText = L"фамили€ и им€ солдата";
+			this->Column1->Name = L"Column1";
+			this->Column1->ReadOnly = true;
+			this->Column1->ToolTipText = L"столбец с фамили€ми солдатов";
+			// 
 			// button1
 			// 
 			this->button1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
-			this->button1->Location = System::Drawing::Point(565, 96);
+			this->button1->Location = System::Drawing::Point(563, 12);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(110, 23);
 			this->button1->TabIndex = 1;
@@ -107,7 +111,7 @@ namespace Wehrmacht {
 			// button2
 			// 
 			this->button2->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
-			this->button2->Location = System::Drawing::Point(565, 126);
+			this->button2->Location = System::Drawing::Point(563, 42);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(110, 23);
 			this->button2->TabIndex = 2;
@@ -118,7 +122,7 @@ namespace Wehrmacht {
 			// button4
 			// 
 			this->button4->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
-			this->button4->Location = System::Drawing::Point(565, 155);
+			this->button4->Location = System::Drawing::Point(563, 71);
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(110, 23);
 			this->button4->TabIndex = 4;
@@ -129,7 +133,7 @@ namespace Wehrmacht {
 			// button3
 			// 
 			this->button3->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
-			this->button3->Location = System::Drawing::Point(565, 185);
+			this->button3->Location = System::Drawing::Point(563, 101);
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(107, 23);
 			this->button3->TabIndex = 5;
@@ -148,65 +152,11 @@ namespace Wehrmacht {
 			this->button5->UseVisualStyleBackColor = true;
 			this->button5->Click += gcnew System::EventHandler(this, &main_menu::button5_Click);
 			// 
-			// label1
-			// 
-			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(562, 13);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(31, 13);
-			this->label1->TabIndex = 7;
-			this->label1->Text = L"день";
-			// 
-			// numericUpDown1
-			// 
-			this->numericUpDown1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
-			this->numericUpDown1->Location = System::Drawing::Point(565, 30);
-			this->numericUpDown1->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 31, 0, 0, 0 });
-			this->numericUpDown1->Minimum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 1, 0, 0, 0 });
-			this->numericUpDown1->Name = L"numericUpDown1";
-			this->numericUpDown1->Size = System::Drawing::Size(107, 20);
-			this->numericUpDown1->TabIndex = 8;
-			this->numericUpDown1->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 1, 0, 0, 0 });
-			// 
-			// numericUpDown2
-			// 
-			this->numericUpDown2->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
-			this->numericUpDown2->Location = System::Drawing::Point(565, 70);
-			this->numericUpDown2->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 12, 0, 0, 0 });
-			this->numericUpDown2->Minimum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 1, 0, 0, 0 });
-			this->numericUpDown2->Name = L"numericUpDown2";
-			this->numericUpDown2->Size = System::Drawing::Size(107, 20);
-			this->numericUpDown2->TabIndex = 10;
-			this->numericUpDown2->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 1, 0, 0, 0 });
-			this->numericUpDown2->ValueChanged += gcnew System::EventHandler(this, &main_menu::numericUpDown2_ValueChanged);
-			// 
-			// label2
-			// 
-			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(562, 53);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(39, 13);
-			this->label2->TabIndex = 9;
-			this->label2->Text = L"мес€ц";
-			// 
-			// Column1
-			// 
-			dataGridViewCellStyle1->BackColor = System::Drawing::Color::White;
-			this->Column1->DefaultCellStyle = dataGridViewCellStyle1;
-			this->Column1->HeaderText = L"фамили€ и им€ солдата";
-			this->Column1->Name = L"Column1";
-			this->Column1->ReadOnly = true;
-			this->Column1->ToolTipText = L"столбец с фамили€ми солдатов";
-			// 
 			// main_menu
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(684, 561);
-			this->Controls->Add(this->numericUpDown2);
-			this->Controls->Add(this->label2);
-			this->Controls->Add(this->numericUpDown1);
-			this->Controls->Add(this->label1);
 			this->Controls->Add(this->button5);
 			this->Controls->Add(this->button3);
 			this->Controls->Add(this->button4);
@@ -216,10 +166,7 @@ namespace Wehrmacht {
 			this->Name = L"main_menu";
 			this->Text = L"main_menu";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown1))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown2))->EndInit();
 			this->ResumeLayout(false);
-			this->PerformLayout();
 
 		}
 #pragma endregion
@@ -231,6 +178,7 @@ namespace Wehrmacht {
 	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
 
 	}
+		   //add solder
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 		InputNameSolder window;
 		window.ShowDialog();
@@ -243,73 +191,155 @@ namespace Wehrmacht {
 			return;
 		}
 	}
+		   //add day
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	for (int i = 0; i < amount_day; i++) {
-		for (int j = 0; j < amount_solders; j++) {
-			dataGridView1->Columns[i]->DefaultCellStyle->BackColor = Color::White;
-		}
-	}
-	dataGridView1->Columns->Add(amount_day++.ToString(), numericUpDown1->Value.ToString() + "." + numericUpDown2->Value.ToString());
-	dataGridView1->Rows[0]->ReadOnly = true;
-	try {
-		numericUpDown1->Value++;
-	}
-	catch (System::ArgumentOutOfRangeException^) {
-		numericUpDown1->Value = 1;
-		try {
-			numericUpDown2->Value++;
-		}
-		catch (System::ArgumentOutOfRangeException^) {
-			numericUpDown2->Value = 1;
-		}
-	}
-	
-}
-private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
-	day_options day;
+	InputDay day;
 	day.ShowDialog();
+	if (day.day != 0 && day.month != 0) {
+		int num_day = day.day;
+		int num_month = day.month;
+		switch (num_month)
+		{
+		case 1:
+			if (num_day > 31) {
+				MessageBox::Show("неправильно введен день");
+				return;
+			}
+			break;
+		case 2:
+			if (num_day > 28) {
+				MessageBox::Show("неправильно введен день");
+				return;
+			}
+			break;
+		case 3:
+			if (num_day > 31) {
+				MessageBox::Show("неправильно введен день");
+				return;
+			}
+			break;
+		case 4:
+			if (num_day > 30) {
+				MessageBox::Show("неправильно введен день");
+				return;
+			}
+			break;
+		case 5:
+			if (num_day > 31) {
+				MessageBox::Show("неправильно введен день");
+				return;
+			}
+			break;
+		case 6:
+			if (num_day > 30) {
+				MessageBox::Show("неправильно введен день");
+				return;
+			}
+			break;
+		case 7:
+			if (num_day > 31) {
+				MessageBox::Show("неправильно введен день");
+				return;
+			}
+			break;
+		case 8:
+			if (num_day > 31) {
+				MessageBox::Show("неправильно введен день");
+				return;
+			}
+			break;
+		case 9:
+			if (num_day > 30) {
+				MessageBox::Show("неправильно введен день");
+				return;
+			}
+			break;
+		case 10:
+			if (num_day > 31) {
+				MessageBox::Show("неправильно введен день");
+				return;
+			}
+			break;
+		case 11:
+			if (num_day > 30) {
+				MessageBox::Show("неправильно введен день");
+				return;
+			}
+			break;
+		case 12:
+			if (num_day > 31) {
+				MessageBox::Show("неправильно введен день");
+				return;
+			}
+			break;
+		default:
+			MessageBox::Show("неправильно введен мес€ц");
+			return;
+			break;
+		}
+		for (int i = 0; i < amount_day; i++) {
+			for (int j = 0; j < amount_solders; j++) {
+				dataGridView1->Columns[i]->DefaultCellStyle->BackColor = Color::White;
+			}
+		}
+		for (int i = 0; i < amount_solders; i++) {
+			for (int j = 0; j < amount_day + 1; j++) {
+				if (Convert::ToString(dataGridView1->Rows[i]->Cells[j]->Value) == "о"|| "ќ") {
+					dataGridView1->Rows[i]->Cells[j]->Style->BackColor = Color::Red;
+				}
+			}
+		}
+		dataGridView1->Columns->Add(amount_day++.ToString(), num_day.ToString() + "." + num_month.ToString());
+	}
+	else {
+		MessageBox::Show("вы не ввели мес€ц или день");
+	}
 }
+	   //day settings
+private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+	InputDay choice;
+	choice.ShowDialog();
+	if (choice.day != 0 && choice.month != 0) {
+		int num_day = choice.day;
+		int num_month = choice.month;
+		bool found = false;
+		int choice_day;
+		for (int i = 0; i < amount_day + 1; i++) {
+			if (Convert::ToString(dataGridView1->Columns[i]->HeaderCell->Value) == (num_day.ToString() + "." + num_month.ToString())->ToString()) {
+				choice_day = i;
+				found = true;
+			}
+		}
+		if (found) {
+			day_options day;
+			this->Hide();
+			for (int solder = 0; solder < amount_solders; solder++) {
+				day.dataGridView1->Rows->Add(this->dataGridView1->Rows[solder]->Cells[0]->Value);
+				if (Convert::ToString(dataGridView1->Rows[solder]->Cells[choice_day]->Value) == "о" || "ќ") {
+					day.dataGridView1->Rows[solder]->DefaultCellStyle->BackColor = Color::Red;
+				}
+			}
+			for (int solder = 0; solder < amount_solders; solder++) {
+				day.dataGridView1->Rows[solder]->Cells[2]->Value = "завтрак";
+				day.dataGridView1->Rows[solder]->Cells[9]->Value = "обед";
+				day.dataGridView1->Rows[solder]->Cells[14]->Value = "ужин";
+			}
+			day.ShowDialog();
+			this->Show();
+			for (int solder = 0; solder < amount_solders; solder++) {
+				dataGridView1->Rows[solder]->ReadOnly = false;
+			}
+		}
+		else {
+			MessageBox::Show("такой день не найден");
+			return;
+		}
+	}
+}
+	   //settings
 private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
 	settings window;
 	window.ShowDialog();
-}
-private: System::Void numericUpDown2_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
-	if (numericUpDown2->Value == 1) {
-		numericUpDown1->Maximum = 31;
-	}
-	else if(numericUpDown2->Value == 2) {
-		numericUpDown1->Maximum = 28;
-	}
-	else if (numericUpDown2->Value == 3) {
-		numericUpDown1->Maximum = 31;
-	}
-	else if (numericUpDown2->Value == 4) {
-		numericUpDown1->Maximum = 30;
-	}
-	else if (numericUpDown2->Value == 5) {
-		numericUpDown1->Maximum = 31;
-	}
-	else if (numericUpDown2->Value == 6) {
-		numericUpDown1->Maximum = 30;
-	}
-	else if (numericUpDown2->Value == 7) {
-		numericUpDown1->Maximum = 31;
-	}
-	else if (numericUpDown2->Value == 8) {
-		numericUpDown1->Maximum = 31;
-	}
-	else if (numericUpDown2->Value == 9) {
-		numericUpDown1->Maximum = 30;
-	}
-	else if (numericUpDown2->Value == 10) {
-		numericUpDown1->Maximum = 31;
-	}
-	else if (numericUpDown2->Value == 11) {
-		numericUpDown1->Maximum = 30;
-	}
-	else if (numericUpDown2->Value == 12) {
-		numericUpDown1->Maximum = 31;
-	}
 }
 };
 }

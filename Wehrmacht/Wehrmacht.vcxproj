@@ -119,10 +119,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AddNaryad.cpp" />
     <ClCompile Include="main_menu.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AddNaryad.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="day_options.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="InputDay.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="InputNameSolder.h">
@@ -136,8 +143,14 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AddNaryad.resx">
+      <DependentUpon>AddNaryad.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="day_options.resx">
       <DependentUpon>day_options.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InputDay.resx">
+      <DependentUpon>InputDay.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InputNameSolder.resx">
       <DependentUpon>InputNameSolder.h</DependentUpon>
