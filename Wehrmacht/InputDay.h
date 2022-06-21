@@ -126,8 +126,10 @@ namespace Wehrmacht {
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
+			this->MaximumSize = System::Drawing::Size(192, 160);
+			this->MinimumSize = System::Drawing::Size(192, 160);
 			this->Name = L"InputDay";
-			this->Text = L"InputDay";
+			this->Text = L"ввод дня";
 			this->ResumeLayout(false);
 			this->PerformLayout();
 

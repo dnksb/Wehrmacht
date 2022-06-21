@@ -46,11 +46,17 @@ namespace Wehrmacht {
 	private: System::Windows::Forms::Button^ button4;
 	private: System::Windows::Forms::Button^ button3;
 	private: System::Windows::Forms::Button^ button5;
-
-
-
-
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -70,12 +76,12 @@ namespace Wehrmacht {
 		{
 			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
-			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->button5 = (gcnew System::Windows::Forms::Button());
+			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -85,22 +91,13 @@ namespace Wehrmacht {
 			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(1) { this->Column1 });
 			this->dataGridView1->Location = System::Drawing::Point(13, 13);
 			this->dataGridView1->Name = L"dataGridView1";
-			this->dataGridView1->Size = System::Drawing::Size(543, 536);
+			this->dataGridView1->Size = System::Drawing::Size(744, 536);
 			this->dataGridView1->TabIndex = 0;
-			// 
-			// Column1
-			// 
-			dataGridViewCellStyle1->BackColor = System::Drawing::Color::White;
-			this->Column1->DefaultCellStyle = dataGridViewCellStyle1;
-			this->Column1->HeaderText = L"фамилия и имя солдата";
-			this->Column1->Name = L"Column1";
-			this->Column1->ReadOnly = true;
-			this->Column1->ToolTipText = L"столбец с фамилиями солдатов";
 			// 
 			// button1
 			// 
 			this->button1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
-			this->button1->Location = System::Drawing::Point(563, 12);
+			this->button1->Location = System::Drawing::Point(763, 12);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(110, 23);
 			this->button1->TabIndex = 1;
@@ -111,7 +108,7 @@ namespace Wehrmacht {
 			// button2
 			// 
 			this->button2->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
-			this->button2->Location = System::Drawing::Point(563, 42);
+			this->button2->Location = System::Drawing::Point(763, 42);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(110, 23);
 			this->button2->TabIndex = 2;
@@ -122,7 +119,7 @@ namespace Wehrmacht {
 			// button4
 			// 
 			this->button4->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
-			this->button4->Location = System::Drawing::Point(563, 71);
+			this->button4->Location = System::Drawing::Point(763, 71);
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(110, 23);
 			this->button4->TabIndex = 4;
@@ -133,7 +130,7 @@ namespace Wehrmacht {
 			// button3
 			// 
 			this->button3->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
-			this->button3->Location = System::Drawing::Point(563, 101);
+			this->button3->Location = System::Drawing::Point(763, 101);
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(107, 23);
 			this->button3->TabIndex = 5;
@@ -144,7 +141,7 @@ namespace Wehrmacht {
 			// button5
 			// 
 			this->button5->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Right));
-			this->button5->Location = System::Drawing::Point(563, 513);
+			this->button5->Location = System::Drawing::Point(763, 513);
 			this->button5->Name = L"button5";
 			this->button5->Size = System::Drawing::Size(109, 35);
 			this->button5->TabIndex = 6;
@@ -152,19 +149,30 @@ namespace Wehrmacht {
 			this->button5->UseVisualStyleBackColor = true;
 			this->button5->Click += gcnew System::EventHandler(this, &main_menu::button5_Click);
 			// 
+			// Column1
+			// 
+			dataGridViewCellStyle1->BackColor = System::Drawing::Color::White;
+			this->Column1->DefaultCellStyle = dataGridViewCellStyle1;
+			this->Column1->HeaderText = L"фамилия и имя солдата";
+			this->Column1->Name = L"Column1";
+			this->Column1->ReadOnly = true;
+			this->Column1->ToolTipText = L"столбец с фамилиями солдатов";
+			// 
 			// main_menu
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(684, 561);
+			this->ClientSize = System::Drawing::Size(884, 561);
 			this->Controls->Add(this->button5);
 			this->Controls->Add(this->button3);
 			this->Controls->Add(this->button4);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->dataGridView1);
+			this->MaximumSize = System::Drawing::Size(900, 600);
+			this->MinimumSize = System::Drawing::Size(900, 600);
 			this->Name = L"main_menu";
-			this->Text = L"main_menu";
+			this->Text = L"журнал старшины";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->ResumeLayout(false);
 
@@ -284,7 +292,8 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		}
 		for (int i = 0; i < amount_solders; i++) {
 			for (int j = 0; j < amount_day + 1; j++) {
-				if (Convert::ToString(dataGridView1->Rows[i]->Cells[j]->Value) == "о"|| "О") {
+				if (Convert::ToString(dataGridView1->Rows[i]->Cells[j]->Value) == "о"|| 
+					Convert::ToString(dataGridView1->Rows[i]->Cells[j]->Value) == "О") {
 					dataGridView1->Rows[i]->Cells[j]->Style->BackColor = Color::Red;
 				}
 			}
@@ -305,9 +314,11 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 		bool found = false;
 		int choice_day;
 		for (int i = 0; i < amount_day + 1; i++) {
-			if (Convert::ToString(dataGridView1->Columns[i]->HeaderCell->Value) == (num_day.ToString() + "." + num_month.ToString())->ToString()) {
+			if (Convert::ToString(dataGridView1->Columns[i]->HeaderCell->Value) == 
+				(num_day.ToString() + "." + num_month.ToString())->ToString()) {
 				choice_day = i;
 				found = true;
+				break;
 			}
 		}
 		if (found) {
@@ -315,7 +326,8 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 			this->Hide();
 			for (int solder = 0; solder < amount_solders; solder++) {
 				day.dataGridView1->Rows->Add(this->dataGridView1->Rows[solder]->Cells[0]->Value);
-				if (Convert::ToString(dataGridView1->Rows[solder]->Cells[choice_day]->Value) == "о" || "О") {
+				if (Convert::ToString(dataGridView1->Rows[solder]->Cells[choice_day]->Value) == "о" || 
+					Convert::ToString(dataGridView1->Rows[solder]->Cells[choice_day]->Value) == "О") {
 					day.dataGridView1->Rows[solder]->DefaultCellStyle->BackColor = Color::Red;
 				}
 			}
@@ -323,6 +335,9 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 				day.dataGridView1->Rows[solder]->Cells[2]->Value = "завтрак";
 				day.dataGridView1->Rows[solder]->Cells[9]->Value = "обед";
 				day.dataGridView1->Rows[solder]->Cells[14]->Value = "ужин";
+				day.dataGridView1->Rows[solder]->Cells[2]->Style->BackColor = Color::Gold;
+				day.dataGridView1->Rows[solder]->Cells[9]->Style->BackColor = Color::Khaki;
+				day.dataGridView1->Rows[solder]->Cells[14]->Style->BackColor = Color::Orange;
 			}
 			day.ShowDialog();
 			this->Show();

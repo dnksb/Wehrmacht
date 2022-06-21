@@ -119,7 +119,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AddNaryad.cpp" />
     <ClCompile Include="main_menu.cpp" />
   </ItemGroup>
   <ItemGroup>

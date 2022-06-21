@@ -140,7 +140,7 @@ namespace Wehrmacht {
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(129, 23);
 			this->button1->TabIndex = 8;
-			this->button1->Text = L"ок";
+			this->button1->Text = L"добавить";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &AddNaryad::button1_Click);
 			// 
@@ -157,8 +157,10 @@ namespace Wehrmacht {
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->label1);
+			this->MaximumSize = System::Drawing::Size(300, 163);
+			this->MinimumSize = System::Drawing::Size(300, 163);
 			this->Name = L"AddNaryad";
-			this->Text = L"AddNaryad";
+			this->Text = L"добавить мероприятие";
 			this->ResumeLayout(false);
 			this->PerformLayout();
 

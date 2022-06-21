@@ -104,8 +104,10 @@ namespace Wehrmacht {
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
+			this->MaximumSize = System::Drawing::Size(191, 124);
+			this->MinimumSize = System::Drawing::Size(191, 124);
 			this->Name = L"InputNameSolder";
-			this->Text = L"InputNameSolder";
+			this->Text = L"ввод фамилии и имени солдата";
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
