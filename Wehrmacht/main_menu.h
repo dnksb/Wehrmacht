@@ -45,11 +45,12 @@ namespace Wehrmacht {
 	protected:
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::Button^ button2;
-	private: System::Windows::Forms::Button^ button4;
+
 	private: System::Windows::Forms::Button^ button3;
 	private: System::Windows::Forms::Button^ button5;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
+
 	private: System::Windows::Forms::Button^ button6;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
 	private:
 		/// <summary>
 		/// Обязательная переменная конструктора.
@@ -63,12 +64,11 @@ namespace Wehrmacht {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
-			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->button5 = (gcnew System::Windows::Forms::Button());
 			this->button6 = (gcnew System::Windows::Forms::Button());
@@ -86,12 +86,14 @@ namespace Wehrmacht {
 			// 
 			// Column1
 			// 
-			dataGridViewCellStyle1->BackColor = System::Drawing::Color::White;
-			this->Column1->DefaultCellStyle = dataGridViewCellStyle1;
+			this->Column1->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::AllCells;
+			dataGridViewCellStyle2->BackColor = System::Drawing::Color::White;
+			this->Column1->DefaultCellStyle = dataGridViewCellStyle2;
 			this->Column1->HeaderText = L"фамилия и имя солдата";
 			this->Column1->Name = L"Column1";
 			this->Column1->ReadOnly = true;
 			this->Column1->ToolTipText = L"столбец с фамилиями солдатов";
+			this->Column1->Width = 104;
 			// 
 			// button1
 			// 
@@ -115,22 +117,12 @@ namespace Wehrmacht {
 			this->button2->UseVisualStyleBackColor = true;
 			this->button2->Click += gcnew System::EventHandler(this, &main_menu::button2_Click);
 			// 
-			// button4
-			// 
-			this->button4->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
-			this->button4->Location = System::Drawing::Point(763, 71);
-			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(110, 23);
-			this->button4->TabIndex = 4;
-			this->button4->Text = L"создать отчет";
-			this->button4->UseVisualStyleBackColor = true;
-			// 
 			// button3
 			// 
 			this->button3->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
-			this->button3->Location = System::Drawing::Point(763, 101);
+			this->button3->Location = System::Drawing::Point(763, 71);
 			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(107, 23);
+			this->button3->Size = System::Drawing::Size(110, 23);
 			this->button3->TabIndex = 5;
 			this->button3->Text = L"открыть день";
 			this->button3->UseVisualStyleBackColor = true;
@@ -139,19 +131,19 @@ namespace Wehrmacht {
 			// button5
 			// 
 			this->button5->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Right));
-			this->button5->Location = System::Drawing::Point(763, 513);
+			this->button5->Location = System::Drawing::Point(763, 524);
 			this->button5->Name = L"button5";
-			this->button5->Size = System::Drawing::Size(109, 35);
+			this->button5->Size = System::Drawing::Size(110, 24);
 			this->button5->TabIndex = 6;
-			this->button5->Text = L"настройки рабочего места";
+			this->button5->Text = L"справка";
 			this->button5->UseVisualStyleBackColor = true;
 			this->button5->Click += gcnew System::EventHandler(this, &main_menu::button5_Click);
 			// 
 			// button6
 			// 
-			this->button6->Location = System::Drawing::Point(764, 131);
+			this->button6->Location = System::Drawing::Point(763, 101);
 			this->button6->Name = L"button6";
-			this->button6->Size = System::Drawing::Size(106, 23);
+			this->button6->Size = System::Drawing::Size(110, 23);
 			this->button6->TabIndex = 7;
 			this->button6->Text = L"сохранить";
 			this->button6->UseVisualStyleBackColor = true;
@@ -165,7 +157,6 @@ namespace Wehrmacht {
 			this->Controls->Add(this->button6);
 			this->Controls->Add(this->button5);
 			this->Controls->Add(this->button3);
-			this->Controls->Add(this->button4);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->dataGridView1);
@@ -189,20 +180,39 @@ namespace Wehrmacht {
 		if (DB.LoadFile("Data_base.xml") == tinyxml2::XML_SUCCESS) {
 			tinyxml2::XMLElement* solder = DB.FirstChildElement("days");
 			solder = solder->FirstChildElement("day");
-			solder = solder->FirstChildElement("solder");
-			while (solder != NULL) {
-				std::string name = solder->Attribute("name");
-				System::String^ s = gcnew System::String(name.c_str());
-				add_solder(s);
-				solder = solder->NextSiblingElement("solder");
+			if (solder != NULL) {
+				solder = solder->FirstChildElement("solder");
+				if (solder != NULL) {
+					while (solder != NULL) {
+						std::string name = solder->Attribute("name");
+						System::String^ s = gcnew System::String(name.c_str());
+						add_solder(s);
+						solder = solder->NextSiblingElement("solder");
+					}
+				}
 			}
 			tinyxml2::XMLElement* day = DB.FirstChildElement("days");
 			day = day->FirstChildElement("day");
-			while (day != NULL) {
-				std::string time = day->Attribute("date");
-				System::String^ s = gcnew System::String(time.c_str());
-				add_day(s);
-				day = day->NextSiblingElement("day");
+			int num_day = 1;
+			if (day != NULL) {
+				while (day != NULL) {
+					std::string time = day->Attribute("date");
+					System::String^ s = gcnew System::String(time.c_str());
+					add_day(s);
+					solder = day->FirstChildElement("solder");
+					int num_solder = 0;
+					if (solder != NULL) {
+						while (solder != NULL) {
+							std::string present = solder->Attribute("present");
+							System::String^ s = gcnew System::String(present.c_str());
+							add_pass(s, num_solder, num_day);
+							num_solder++;
+							solder = solder->NextSiblingElement("solder");
+						}
+					}
+					num_day++;
+					day = day->NextSiblingElement("day");
+				}
 			}
 		}
 	}
@@ -212,6 +222,11 @@ namespace Wehrmacht {
 			(const char*)(Marshal::StringToHGlobalAnsi(s)).ToPointer();
 		os = chars;
 		Marshal::FreeHGlobal(IntPtr((void*)chars));
+	}
+
+	private: void add_pass(String^ str, int row, int column) {
+		dataGridView1->Rows[row]->Cells[column]->Value = str;
+		update_place();
 	}
 		//update place
 	private: void update_place() {
@@ -389,6 +404,7 @@ namespace Wehrmacht {
 			}
 			tinyxml2::XMLElement* solder = DB.FirstChildElement("days");
 			day = solder->FirstChildElement("day");
+			int num_day = 1;
 			while (day != NULL) {
 				for (int num_solder = 0; num_solder < amount_solders; num_solder++) {
 					solder = day->FirstChildElement("solder");
@@ -398,6 +414,9 @@ namespace Wehrmacht {
 						System::String^ s = gcnew System::String(name.c_str());
 						if (Convert::ToString(dataGridView1->Rows[num_solder]->Cells[0]->Value) == s) {
 							found = true;
+							std::string str_solder;
+							MarshalString(Convert::ToString(dataGridView1->Rows[num_solder]->Cells[num_day]->Value), str_solder);
+							solder->SetAttribute("present", str_solder.c_str());
 						}
 						solder = solder->NextSiblingElement("solder");
 					}
@@ -406,6 +425,8 @@ namespace Wehrmacht {
 						std::string str_solder;
 						MarshalString(Convert::ToString(dataGridView1->Rows[num_solder]->Cells[0]->Value), str_solder);
 						solder->SetAttribute("name", str_solder.c_str());
+						MarshalString(Convert::ToString(dataGridView1->Rows[num_solder]->Cells[num_day]->Value), str_solder);
+						solder->SetAttribute("present", str_solder.c_str());
 						tinyxml2::XMLElement* hour;
 						hour = solder->InsertNewChildElement("hour");
 						hour->SetAttribute("date", "06:00");
@@ -481,6 +502,7 @@ namespace Wehrmacht {
 						hour->SetAttribute("color", "");
 					}
 				}
+				num_day++;
 				day = day->NextSiblingElement("day");
 			}
 		}
@@ -579,6 +601,7 @@ namespace Wehrmacht {
 			}
 			tinyxml2::XMLElement* solder = DB.FirstChildElement("days");
 			day = solder->FirstChildElement("day");
+			int num_day = 1;
 			while (day != NULL) {
 				for (int num_solder = 0; num_solder < amount_solders; num_solder++) {
 					solder = day->FirstChildElement("solder");
@@ -588,6 +611,9 @@ namespace Wehrmacht {
 						System::String^ s = gcnew System::String(name.c_str());
 						if (Convert::ToString(dataGridView1->Rows[num_solder]->Cells[0]->Value) == s) {
 							found = true;
+							std::string str_solder;
+							MarshalString(Convert::ToString(dataGridView1->Rows[num_solder]->Cells[num_day]->Value), str_solder);
+							solder->SetAttribute("present", str_solder.c_str());
 						}
 						solder = solder->NextSiblingElement("solder");
 					}
@@ -596,6 +622,8 @@ namespace Wehrmacht {
 						std::string str_solder;
 						MarshalString(Convert::ToString(dataGridView1->Rows[num_solder]->Cells[0]->Value), str_solder);
 						solder->SetAttribute("name", str_solder.c_str());
+						MarshalString(Convert::ToString(dataGridView1->Rows[num_solder]->Cells[num_day]->Value), str_solder);
+						solder->SetAttribute("present", str_solder.c_str());
 						tinyxml2::XMLElement* hour;
 						hour = solder->InsertNewChildElement("hour");
 						hour->SetAttribute("date", "06:00");
@@ -671,6 +699,7 @@ namespace Wehrmacht {
 						hour->SetAttribute("color", "");
 					}
 				}
+				num_day++;
 				day = day->NextSiblingElement("day");
 			}
 		}

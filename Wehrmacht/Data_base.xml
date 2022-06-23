@@ -1,3 +1,205 @@
 <?xml version="1.0" encoding="windows-1251"?>
 <days>
+    <day date="2.2">
+        <solder name="a" present="">
+            <hour date="06:00" text="суточ. дежурство" color="Голубой"/>
+            <hour date="07:00" text="завтрак" color="Золотой"/>
+            <hour date="08:00" text="суточ. дежурство" color="Голубой"/>
+            <hour date="09:00" text="суточ. дежурство" color="Голубой"/>
+            <hour date="10:00" text="суточ. дежурство" color="Голубой"/>
+            <hour date="11:00" text="суточ. дежурство" color="Голубой"/>
+            <hour date="12:00" text="суточ. дежурство" color="Голубой"/>
+            <hour date="13:00" text="суточ. дежурство" color="Голубой"/>
+            <hour date="14:00" text="обед" color="Каши"/>
+            <hour date="15:00" text="суточ. дежурство" color="Голубой"/>
+            <hour date="16:00" text="суточ. дежурство" color="Голубой"/>
+            <hour date="17:00" text="суточ. дежурство" color="Голубой"/>
+            <hour date="18:00" text="суточ. дежурство" color="Голубой"/>
+            <hour date="19:00" text="ужин" color="Ораньжевый"/>
+            <hour date="20:00" text="суточ. дежурство" color="Голубой"/>
+            <hour date="21:00" text="суточ. дежурство" color="Голубой"/>
+            <hour date="22:00" text="суточ. дежурство" color="Голубой"/>
+            <hour date="23:00" text="суточ. дежурство" color="Голубой"/>
+        </solder>
+        <solder name="b" present="">
+            <hour date="06:00" text="суточ. дежурство, выполнено" color="Памело"/>
+            <hour date="07:00" text="завтрак, выполнено" color="Памело"/>
+            <hour date="08:00" text="суточ. дежурство, выполнено" color="Памело"/>
+            <hour date="09:00" text="суточ. дежурство, выполнено" color="Памело"/>
+            <hour date="10:00" text="суточ. дежурство, выполнено" color="Памело"/>
+            <hour date="11:00" text="суточ. дежурство, выполнено" color="Памело"/>
+            <hour date="12:00" text="суточ. дежурство, выполнено" color="Памело"/>
+            <hour date="13:00" text="суточ. дежурство, выполнено" color="Памело"/>
+            <hour date="14:00" text="обед, выполнено" color="Памело"/>
+            <hour date="15:00" text="суточ. дежурство, выполнено" color="Памело"/>
+            <hour date="16:00" text="суточ. дежурство, выполнено" color="Памело"/>
+            <hour date="17:00" text="суточ. дежурство, выполнено" color="Памело"/>
+            <hour date="18:00" text="суточ. дежурство, выполнено" color="Памело"/>
+            <hour date="19:00" text="ужин, выполнено" color="Памело"/>
+            <hour date="20:00" text="суточ. дежурство, выполнено" color="Памело"/>
+            <hour date="21:00" text="суточ. дежурство, выполнено" color="Памело"/>
+            <hour date="22:00" text="суточ. дежурство, выполнено" color="Памело"/>
+            <hour date="23:00" text="суточ. дежурство, выполнено" color="Памело"/>
+        </solder>
+        <solder name="c" present="">
+            <hour date="06:00" text="другое 24 ч." color="Серый"/>
+            <hour date="07:00" text="завтрак" color="Золотой"/>
+            <hour date="08:00" text="другое 24 ч." color="Серый"/>
+            <hour date="09:00" text="другое 24 ч." color="Серый"/>
+            <hour date="10:00" text="другое 24 ч." color="Серый"/>
+            <hour date="11:00" text="другое 24 ч." color="Серый"/>
+            <hour date="12:00" text="другое 24 ч." color="Серый"/>
+            <hour date="13:00" text="другое 24 ч." color="Серый"/>
+            <hour date="14:00" text="обед" color="Каши"/>
+            <hour date="15:00" text="другое 24 ч." color="Серый"/>
+            <hour date="16:00" text="другое 24 ч." color="Серый"/>
+            <hour date="17:00" text="другое 24 ч." color="Серый"/>
+            <hour date="18:00" text="другое 24 ч." color="Серый"/>
+            <hour date="19:00" text="ужин" color="Ораньжевый"/>
+            <hour date="20:00" text="другое 24 ч." color="Серый"/>
+            <hour date="21:00" text="другое 24 ч." color="Серый"/>
+            <hour date="22:00" text="другое 24 ч." color="Серый"/>
+            <hour date="23:00" text="другое 24 ч." color="Серый"/>
+        </solder>
+        <solder name="d" present="">
+            <hour date="06:00" text="другое 24 ч., выполнено" color="Памело"/>
+            <hour date="07:00" text="завтрак, выполнено" color="Памело"/>
+            <hour date="08:00" text="другое 24 ч., выполнено" color="Памело"/>
+            <hour date="09:00" text="другое 24 ч., выполнено" color="Памело"/>
+            <hour date="10:00" text="другое 24 ч., выполнено" color="Памело"/>
+            <hour date="11:00" text="другое 24 ч., выполнено" color="Памело"/>
+            <hour date="12:00" text="другое 24 ч., выполнено" color="Памело"/>
+            <hour date="13:00" text="другое 24 ч., выполнено" color="Памело"/>
+            <hour date="14:00" text="обед, выполнено" color="Памело"/>
+            <hour date="15:00" text="другое 24 ч., выполнено" color="Памело"/>
+            <hour date="16:00" text="другое 24 ч., выполнено" color="Памело"/>
+            <hour date="17:00" text="другое 24 ч., выполнено" color="Памело"/>
+            <hour date="18:00" text="другое 24 ч., выполнено" color="Памело"/>
+            <hour date="19:00" text="ужин, выполнено" color="Памело"/>
+            <hour date="20:00" text="другое 24 ч., выполнено" color="Памело"/>
+            <hour date="21:00" text="другое 24 ч., выполнено" color="Памело"/>
+            <hour date="22:00" text="другое 24 ч., выполнено" color="Памело"/>
+            <hour date="23:00" text="другое 24 ч., выполнено" color="Памело"/>
+        </solder>
+        <solder name="e" present="">
+            <hour date="06:00" text="" color=""/>
+            <hour date="07:00" text="завтрак" color="Золотой"/>
+            <hour date="08:00" text="" color=""/>
+            <hour date="09:00" text="гарнизон" color="Желто-Зеленый"/>
+            <hour date="10:00" text="гарнизон" color="Желто-Зеленый"/>
+            <hour date="11:00" text="гарнизон" color="Желто-Зеленый"/>
+            <hour date="12:00" text="гарнизон" color="Желто-Зеленый"/>
+            <hour date="13:00" text="" color=""/>
+            <hour date="14:00" text="обед" color="Каши"/>
+            <hour date="15:00" text="" color=""/>
+            <hour date="16:00" text="" color=""/>
+            <hour date="17:00" text="" color=""/>
+            <hour date="18:00" text="" color=""/>
+            <hour date="19:00" text="ужин" color="Ораньжевый"/>
+            <hour date="20:00" text="" color=""/>
+            <hour date="21:00" text="" color=""/>
+            <hour date="22:00" text="" color=""/>
+            <hour date="23:00" text="" color=""/>
+        </solder>
+        <solder name="f" present="">
+            <hour date="06:00" text="" color=""/>
+            <hour date="07:00" text="завтрак" color="Золотой"/>
+            <hour date="08:00" text="" color=""/>
+            <hour date="09:00" text="гарнизон, выполнено" color="Памело"/>
+            <hour date="10:00" text="гарнизон, выполнено" color="Памело"/>
+            <hour date="11:00" text="гарнизон, выполнено" color="Памело"/>
+            <hour date="12:00" text="гарнизон, выполнено" color="Памело"/>
+            <hour date="13:00" text="" color=""/>
+            <hour date="14:00" text="обед" color="Каши"/>
+            <hour date="15:00" text="" color=""/>
+            <hour date="16:00" text="" color=""/>
+            <hour date="17:00" text="" color=""/>
+            <hour date="18:00" text="" color=""/>
+            <hour date="19:00" text="ужин" color="Ораньжевый"/>
+            <hour date="20:00" text="" color=""/>
+            <hour date="21:00" text="" color=""/>
+            <hour date="22:00" text="" color=""/>
+            <hour date="23:00" text="" color=""/>
+        </solder>
+        <solder name="g" present="">
+            <hour date="06:00" text="" color=""/>
+            <hour date="07:00" text="завтрак" color="Золотой"/>
+            <hour date="08:00" text="" color=""/>
+            <hour date="09:00" text="дежурство" color="ИндийскийКрасный"/>
+            <hour date="10:00" text="дежурство" color="ИндийскийКрасный"/>
+            <hour date="11:00" text="дежурство" color="ИндийскийКрасный"/>
+            <hour date="12:00" text="дежурство" color="ИндийскийКрасный"/>
+            <hour date="13:00" text="" color=""/>
+            <hour date="14:00" text="обед" color="Каши"/>
+            <hour date="15:00" text="" color=""/>
+            <hour date="16:00" text="" color=""/>
+            <hour date="17:00" text="" color=""/>
+            <hour date="18:00" text="" color=""/>
+            <hour date="19:00" text="ужин" color="Ораньжевый"/>
+            <hour date="20:00" text="" color=""/>
+            <hour date="21:00" text="" color=""/>
+            <hour date="22:00" text="" color=""/>
+            <hour date="23:00" text="" color=""/>
+        </solder>
+        <solder name="h" present="">
+            <hour date="06:00" text="" color=""/>
+            <hour date="07:00" text="завтрак" color="Золотой"/>
+            <hour date="08:00" text="" color=""/>
+            <hour date="09:00" text="дежурство, выполнено" color="Памело"/>
+            <hour date="10:00" text="дежурство, выполнено" color="Памело"/>
+            <hour date="11:00" text="дежурство, выполнено" color="Памело"/>
+            <hour date="12:00" text="дежурство, выполнено" color="Памело"/>
+            <hour date="13:00" text="" color=""/>
+            <hour date="14:00" text="обед" color="Каши"/>
+            <hour date="15:00" text="" color=""/>
+            <hour date="16:00" text="" color=""/>
+            <hour date="17:00" text="" color=""/>
+            <hour date="18:00" text="" color=""/>
+            <hour date="19:00" text="ужин" color="Ораньжевый"/>
+            <hour date="20:00" text="" color=""/>
+            <hour date="21:00" text="" color=""/>
+            <hour date="22:00" text="" color=""/>
+            <hour date="23:00" text="" color=""/>
+        </solder>
+        <solder name="i" present="">
+            <hour date="06:00" text="" color=""/>
+            <hour date="07:00" text="завтрак" color="Золотой"/>
+            <hour date="08:00" text="" color=""/>
+            <hour date="09:00" text="" color=""/>
+            <hour date="10:00" text="" color=""/>
+            <hour date="11:00" text="" color=""/>
+            <hour date="12:00" text="" color=""/>
+            <hour date="13:00" text="" color=""/>
+            <hour date="14:00" text="обед" color="Каши"/>
+            <hour date="15:00" text="" color=""/>
+            <hour date="16:00" text="" color=""/>
+            <hour date="17:00" text="" color=""/>
+            <hour date="18:00" text="" color=""/>
+            <hour date="19:00" text="ужин" color="Ораньжевый"/>
+            <hour date="20:00" text="" color=""/>
+            <hour date="21:00" text="" color=""/>
+            <hour date="22:00" text="другое 4 ч." color="Серый"/>
+            <hour date="23:00" text="другое 4 ч." color="Серый"/>
+        </solder>
+        <solder name="k" present="">
+            <hour date="06:00" text="" color=""/>
+            <hour date="07:00" text="завтрак" color="Золотой"/>
+            <hour date="08:00" text="" color=""/>
+            <hour date="09:00" text="" color=""/>
+            <hour date="10:00" text="" color=""/>
+            <hour date="11:00" text="" color=""/>
+            <hour date="12:00" text="" color=""/>
+            <hour date="13:00" text="" color=""/>
+            <hour date="14:00" text="обед" color="Каши"/>
+            <hour date="15:00" text="" color=""/>
+            <hour date="16:00" text="" color=""/>
+            <hour date="17:00" text="" color=""/>
+            <hour date="18:00" text="" color=""/>
+            <hour date="19:00" text="ужин" color="Ораньжевый"/>
+            <hour date="20:00" text="" color=""/>
+            <hour date="21:00" text="" color=""/>
+            <hour date="22:00" text="другое до конца дня" color="Серый"/>
+            <hour date="23:00" text="другое до конца дня" color="Серый"/>
+        </solder>
+    </day>
 </days>

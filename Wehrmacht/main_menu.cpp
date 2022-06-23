@@ -5,8 +5,8 @@
 using namespace Wehrmacht;
 using namespace System;
 using namespace System::Windows::Forms;
-
-int main() {
+[STAThreadAttribute]
+int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
 	Wehrmacht::main_menu form;

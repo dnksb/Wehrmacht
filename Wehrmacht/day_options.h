@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include "AddNaryad.h"
 #include "tinyxml2.h"
 #include <iostream>
@@ -13,7 +13,7 @@ namespace Wehrmacht {
 	using namespace System::Drawing;
 
 	/// <summary>
-	/// Сводка для day_options
+	/// РЎРІРѕРґРєР° РґР»СЏ day_options
 	/// </summary>
 	public ref class day_options : public System::Windows::Forms::Form
 	{
@@ -22,13 +22,13 @@ namespace Wehrmacht {
 		{
 			InitializeComponent();
 			//
-			//TODO: добавьте код конструктора
+			//TODO: РґРѕР±Р°РІСЊС‚Рµ РєРѕРґ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР°
 			//
 		}
 
 	protected:
 		/// <summary>
-		/// Освободить все используемые ресурсы.
+		/// РћСЃРІРѕР±РѕРґРёС‚СЊ РІСЃРµ РёСЃРїРѕР»СЊР·СѓРµРјС‹Рµ СЂРµСЃСѓСЂСЃС‹.
 		/// </summary>
 		~day_options()
 		{
@@ -60,20 +60,43 @@ namespace Wehrmacht {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column17;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column18;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column19;
+	private: System::Windows::Forms::Button^ button2;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	private:
 		/// <summary>
-		/// Обязательная переменная конструктора.
+		/// РћР±СЏР·Р°С‚РµР»СЊРЅР°СЏ РїРµСЂРµРјРµРЅРЅР°СЏ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР°.
 		/// </summary>
 		System::ComponentModel::Container ^components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
-		/// Требуемый метод для поддержки конструктора — не изменяйте 
-		/// содержимое этого метода с помощью редактора кода.
+		/// РўСЂРµР±СѓРµРјС‹Р№ РјРµС‚РѕРґ РґР»СЏ РїРѕРґРґРµСЂР¶РєРё РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР° вЂ” РЅРµ РёР·РјРµРЅСЏР№С‚Рµ 
+		/// СЃРѕРґРµСЂР¶РёРјРѕРµ СЌС‚РѕРіРѕ РјРµС‚РѕРґР° СЃ РїРѕРјРѕС‰СЊСЋ СЂРµРґР°РєС‚РѕСЂР° РєРѕРґР°.
 		/// </summary>
 		void InitializeComponent(void)
 		{
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->button4 = (gcnew System::Windows::Forms::Button());
+			this->button3 = (gcnew System::Windows::Forms::Button());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
@@ -93,9 +116,7 @@ namespace Wehrmacht {
 			this->Column17 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column18 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column19 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->button4 = (gcnew System::Windows::Forms::Button());
-			this->button3 = (gcnew System::Windows::Forms::Button());
-			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->button2 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -113,11 +134,46 @@ namespace Wehrmacht {
 			this->dataGridView1->Size = System::Drawing::Size(743, 536);
 			this->dataGridView1->TabIndex = 1;
 			// 
+			// button4
+			// 
+			this->button4->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
+			this->button4->Location = System::Drawing::Point(762, 13);
+			this->button4->Name = L"button4";
+			this->button4->Size = System::Drawing::Size(110, 36);
+			this->button4->TabIndex = 8;
+			this->button4->Text = L"РґРѕР±Р°РІРёС‚СЊ РјРµСЂРѕРїСЂРёСЏС‚РёРµ";
+			this->button4->UseVisualStyleBackColor = true;
+			this->button4->Click += gcnew System::EventHandler(this, &day_options::button4_Click);
+			// 
+			// button3
+			// 
+			this->button3->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
+			this->button3->Location = System::Drawing::Point(762, 55);
+			this->button3->Name = L"button3";
+			this->button3->Size = System::Drawing::Size(110, 47);
+			this->button3->TabIndex = 9;
+			this->button3->Text = L"СЃРѕС…СЂР°РЅРёС‚СЊ СЂР°СЃРїРёСЃР°РЅРёРµ Рё РІС‹Р№С‚Рё";
+			this->button3->UseVisualStyleBackColor = true;
+			this->button3->Click += gcnew System::EventHandler(this, &day_options::button3_Click);
+			// 
+			// button1
+			// 
+			this->button1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
+			this->button1->Location = System::Drawing::Point(763, 109);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(109, 60);
+			this->button1->TabIndex = 10;
+			this->button1->Text = L"РѕС‚РјРµС‚РёС‚СЊ РєР°Рє РІС‹РїРѕР»РЅРµРЅРѕРµ РІС‹РґРµР»РµРЅРѕРµ Р·Р°РґР°РЅРёРµ";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &day_options::button1_Click_1);
+			// 
 			// Column1
 			// 
-			this->Column1->HeaderText = L"фамили и имя солдата";
+			this->Column1->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::AllCells;
+			this->Column1->HeaderText = L"С„Р°РјРёР»Рё Рё РёРјСЏ СЃРѕР»РґР°С‚Р°";
 			this->Column1->Name = L"Column1";
 			this->Column1->ReadOnly = true;
+			this->Column1->Width = 98;
 			// 
 			// Column2
 			// 
@@ -263,44 +319,22 @@ namespace Wehrmacht {
 			this->Column19->ReadOnly = true;
 			this->Column19->Width = 59;
 			// 
-			// button4
+			// button2
 			// 
-			this->button4->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
-			this->button4->Location = System::Drawing::Point(762, 13);
-			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(110, 36);
-			this->button4->TabIndex = 8;
-			this->button4->Text = L"добавить мероприятие";
-			this->button4->UseVisualStyleBackColor = true;
-			this->button4->Click += gcnew System::EventHandler(this, &day_options::button4_Click);
-			// 
-			// button3
-			// 
-			this->button3->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
-			this->button3->Location = System::Drawing::Point(762, 55);
-			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(110, 47);
-			this->button3->TabIndex = 9;
-			this->button3->Text = L"сохранить расписание и выйти";
-			this->button3->UseVisualStyleBackColor = true;
-			this->button3->Click += gcnew System::EventHandler(this, &day_options::button3_Click);
-			// 
-			// button1
-			// 
-			this->button1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
-			this->button1->Location = System::Drawing::Point(763, 109);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(109, 60);
-			this->button1->TabIndex = 10;
-			this->button1->Text = L"отметить как выполненое выделеное задание";
-			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &day_options::button1_Click_1);
+			this->button2->Location = System::Drawing::Point(763, 176);
+			this->button2->Name = L"button2";
+			this->button2->Size = System::Drawing::Size(109, 35);
+			this->button2->TabIndex = 11;
+			this->button2->Text = L"СЃРѕР·РґР°С‚СЊ РіСЂР°С„РёРє РЅР°СЂСЏРґРѕРІ";
+			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &day_options::button2_Click);
 			// 
 			// day_options
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(884, 561);
+			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->button3);
 			this->Controls->Add(this->button4);
@@ -308,7 +342,7 @@ namespace Wehrmacht {
 			this->MaximumSize = System::Drawing::Size(900, 600);
 			this->MinimumSize = System::Drawing::Size(900, 600);
 			this->Name = L"day_options";
-			this->Text = L"часовая настройка дня";
+			this->Text = L"С‡Р°СЃРѕРІР°СЏ РЅР°СЃС‚СЂРѕР№РєР° РґРЅСЏ";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->ResumeLayout(false);
 
@@ -337,33 +371,36 @@ namespace Wehrmacht {
 							std::string str_hour = hour->Attribute("text");
 							System::String^ s = gcnew System::String(str_hour.c_str());
 							dataGridView1->Rows[num_solder]->Cells[num_hour]->Value = s;
-							if ((std::string)hour->Attribute("color") == "Зеленый") {
+							if ((std::string)hour->Attribute("color") == "Р—РµР»РµРЅС‹Р№") {
 								dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor = Color::Green;
 							}
-							else if ((std::string)hour->Attribute("color") == "Серый") {
+							else if ((std::string)hour->Attribute("color") == "РЎРµСЂС‹Р№") {
 								dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor = Color::Silver;
 							}
-							else if ((std::string)hour->Attribute("color") == "ИндийскийКрасный") {
+							else if ((std::string)hour->Attribute("color") == "РРЅРґРёР№СЃРєРёР№РљСЂР°СЃРЅС‹Р№") {
 								dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor = Color::IndianRed;
 							}
-							else if ((std::string)hour->Attribute("color") == "Желто-Зеленый") {
+							else if ((std::string)hour->Attribute("color") == "Р–РµР»С‚Рѕ-Р—РµР»РµРЅС‹Р№") {
 								dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor = Color::YellowGreen;
 							}
-							else if ((std::string)hour->Attribute("color") == "Голубой") {
+							else if ((std::string)hour->Attribute("color") == "Р“РѕР»СѓР±РѕР№") {
 								dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor = Color::Cyan;
 							}
-							else if ((std::string)hour->Attribute("color") == "Золотой") {
+							else if ((std::string)hour->Attribute("color") == "Р—РѕР»РѕС‚РѕР№") {
 								dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor = Color::Gold;
 							}
-							else if ((std::string)hour->Attribute("color") == "Каши") {
+							else if ((std::string)hour->Attribute("color") == "РљР°С€Рё") {
 								dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor = Color::Khaki;
 							}
-							else if ((std::string)hour->Attribute("color") == "Ораньжевый") {
+							else if ((std::string)hour->Attribute("color") == "РћСЂР°РЅСЊР¶РµРІС‹Р№") {
 								dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor = Color::Orange;
 							}
-							else if ((std::string)hour->Attribute("color") == "Красный" || 
-								(std::string)hour->Attribute("color") == "отсутсвует") {
+							else if ((std::string)hour->Attribute("color") == "РљСЂР°СЃРЅС‹Р№" || 
+								(std::string)hour->Attribute("color") == "РѕС‚СЃСѓС‚СЃРІСѓРµС‚") {
 								dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor = Color::Red;
+							}
+							else if ((std::string)hour->Attribute("color") == "РџР°РјРµР»Рѕ") {
+								dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor = Color::PaleGreen;
 							}
 							hour = hour->NextSiblingElement("hour");
 						}
@@ -397,12 +434,12 @@ namespace Wehrmacht {
 					for (int hour = 1; hour < 19; hour++) {
 						if (Convert::ToString(dataGridView1->Rows[num]->Cells[hour]->Value) == "") {
 							dataGridView1->Rows[num]->Cells[hour]->Style->BackColor = Color::Cyan;
-							dataGridView1->Rows[num]->Cells[hour]->Value = "суточ. дежурство";
+							dataGridView1->Rows[num]->Cells[hour]->Value = "СЃСѓС‚РѕС‡. РґРµР¶СѓСЂСЃС‚РІРѕ";
 						}
 					}
 				}
 				else {
-					MessageBox::Show("такой солдат не найден");
+					MessageBox::Show("С‚Р°РєРѕР№ СЃРѕР»РґР°С‚ РЅРµ РЅР°Р№РґРµРЅ");
 					return;
 				}
 				break;
@@ -431,17 +468,17 @@ namespace Wehrmacht {
 						for (int hour = choice_hour; hour < choice_hour + 4 && hour < 19; hour++) {
 							if (Convert::ToString(dataGridView1->Rows[num]->Cells[hour]->Value) == "") {
 								dataGridView1->Rows[num]->Cells[hour]->Style->BackColor = Color::YellowGreen;
-								dataGridView1->Rows[num]->Cells[hour]->Value = "гарнизон";
+								dataGridView1->Rows[num]->Cells[hour]->Value = "РіР°СЂРЅРёР·РѕРЅ";
 							}
 						}
 					}
 					else {
-						MessageBox::Show("не правильно введено время");
+						MessageBox::Show("РЅРµ РїСЂР°РІРёР»СЊРЅРѕ РІРІРµРґРµРЅРѕ РІСЂРµРјСЏ");
 						return;
 					}
 				}
 				else {
-					MessageBox::Show("такой солдат не найден");
+					MessageBox::Show("С‚Р°РєРѕР№ СЃРѕР»РґР°С‚ РЅРµ РЅР°Р№РґРµРЅ");
 					return;
 				}
 				break;
@@ -470,17 +507,17 @@ namespace Wehrmacht {
 						for (int hour = choice_hour; hour < choice_hour + 4 && hour < 19; hour++) {
 							if (Convert::ToString(dataGridView1->Rows[num]->Cells[hour]->Value) == "") {
 								dataGridView1->Rows[num]->Cells[hour]->Style->BackColor = Color::IndianRed;
-								dataGridView1->Rows[num]->Cells[hour]->Value = "дежурство";
+								dataGridView1->Rows[num]->Cells[hour]->Value = "РґРµР¶СѓСЂСЃС‚РІРѕ";
 							}
 						}
 					}
 					else {
-						MessageBox::Show("не правильно введено время");
+						MessageBox::Show("РЅРµ РїСЂР°РІРёР»СЊРЅРѕ РІРІРµРґРµРЅРѕ РІСЂРµРјСЏ");
 						return;
 					}
 				}
 				else {
-					MessageBox::Show("такой солдат не найден");
+					MessageBox::Show("С‚Р°РєРѕР№ СЃРѕР»РґР°С‚ РЅРµ РЅР°Р№РґРµРЅ");
 					return;
 				}
 				break;
@@ -499,12 +536,12 @@ namespace Wehrmacht {
 					for (int hour = 1; hour < 19; hour++) {
 						if (Convert::ToString(dataGridView1->Rows[num]->Cells[hour]->Value) == "") {
 							dataGridView1->Rows[num]->Cells[hour]->Style->BackColor = Color::Silver;
-							dataGridView1->Rows[num]->Cells[hour]->Value = "другое 24 ч.";
+							dataGridView1->Rows[num]->Cells[hour]->Value = "РґСЂСѓРіРѕРµ 24 С‡.";
 						}
 					}
 				}
 				else {
-					MessageBox::Show("такой солдат не найден");
+					MessageBox::Show("С‚Р°РєРѕР№ СЃРѕР»РґР°С‚ РЅРµ РЅР°Р№РґРµРЅ");
 					return;
 				}
 				break;
@@ -533,17 +570,17 @@ namespace Wehrmacht {
 						for (int hour = choice_hour; hour < 19; hour++) {
 							if (Convert::ToString(dataGridView1->Rows[num]->Cells[hour]->Value) == "") {
 								dataGridView1->Rows[num]->Cells[hour]->Style->BackColor = Color::Silver;
-								dataGridView1->Rows[num]->Cells[hour]->Value = "другое до конца дня";
+								dataGridView1->Rows[num]->Cells[hour]->Value = "РґСЂСѓРіРѕРµ РґРѕ РєРѕРЅС†Р° РґРЅСЏ";
 							}
 						}
 					}
 					else {
-						MessageBox::Show("не правильно введено время");
+						MessageBox::Show("РЅРµ РїСЂР°РІРёР»СЊРЅРѕ РІРІРµРґРµРЅРѕ РІСЂРµРјСЏ");
 						return;
 					}
 				}
 				else {
-					MessageBox::Show("такой солдат не найден");
+					MessageBox::Show("С‚Р°РєРѕР№ СЃРѕР»РґР°С‚ РЅРµ РЅР°Р№РґРµРЅ");
 					return;
 				}
 				break;
@@ -572,29 +609,29 @@ namespace Wehrmacht {
 						for (int hour = choice_hour; hour < choice_hour + 4 && hour < 19; hour++) {
 							if (Convert::ToString(dataGridView1->Rows[num]->Cells[hour]->Value) == "") {
 								dataGridView1->Rows[num]->Cells[hour]->Style->BackColor = Color::Silver;
-								dataGridView1->Rows[num]->Cells[hour]->Value = "другое 4 ч.";
+								dataGridView1->Rows[num]->Cells[hour]->Value = "РґСЂСѓРіРѕРµ 4 С‡.";
 							}
 						}
 					}
 					else {
-						MessageBox::Show("не правильно введено время");
+						MessageBox::Show("РЅРµ РїСЂР°РІРёР»СЊРЅРѕ РІРІРµРґРµРЅРѕ РІСЂРµРјСЏ");
 						return;
 					}
 				}
 				else {
-					MessageBox::Show("такой солдат не найден");
+					MessageBox::Show("С‚Р°РєРѕР№ СЃРѕР»РґР°С‚ РЅРµ РЅР°Р№РґРµРЅ");
 					return;
 				}
 				break;
 				}
 			default:
-				MessageBox::Show("тип мероприятия выбран не правильно");
+				MessageBox::Show("С‚РёРї РјРµСЂРѕРїСЂРёСЏС‚РёСЏ РІС‹Р±СЂР°РЅ РЅРµ РїСЂР°РІРёР»СЊРЅРѕ");
 				return;
 				break;
 			}
 		}
 		else {
-			MessageBox::Show("какие-то значения не выбраны/введены");
+			MessageBox::Show("РєР°РєРёРµ-С‚Рѕ Р·РЅР°С‡РµРЅРёСЏ РЅРµ РІС‹Р±СЂР°РЅС‹/РІРІРµРґРµРЅС‹");
 			return;
 		}
 	}
@@ -605,9 +642,9 @@ namespace Wehrmacht {
 					Convert::ToString(dataGridView1->Rows[y]->Cells[x]->Value) != "" &&
 					dataGridView1->Rows[y]->Cells[x]->Style->BackColor != Color::PaleGreen) {
 					if (dataGridView1->Rows[y]->Cells[x]->Style->BackColor != Color::Red && 
-						Convert::ToString(dataGridView1->Rows[y]->Cells[x]->Value) != "отсутсвует") {
+						Convert::ToString(dataGridView1->Rows[y]->Cells[x]->Value) != "РѕС‚СЃСѓС‚СЃРІСѓРµС‚") {
 						dataGridView1->Rows[y]->Cells[x]->Style->BackColor = Color::PaleGreen;
-						dataGridView1->Rows[y]->Cells[x]->Value = Convert::ToString(dataGridView1->Rows[y]->Cells[x]->Value) + ", выполено";
+						dataGridView1->Rows[y]->Cells[x]->Value = Convert::ToString(dataGridView1->Rows[y]->Cells[x]->Value) + ", РІС‹РїРѕР»РЅРµРЅРѕ";
 					}
 				}
 			}
@@ -636,31 +673,34 @@ namespace Wehrmacht {
 										MarshalString(Convert::ToString(dataGridView1->Rows[num_solder]->Cells[num_hour]->Value), str_solder);
 										hour->SetAttribute("text", str_solder.c_str());
 										if (dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor == Color::Green) {
-											str_solder = "Зеленый";
+											str_solder = "Р—РµР»РµРЅС‹Р№";
 										}
 										else if (dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor == Color::Silver) {
-											str_solder = "Серый";
+											str_solder = "РЎРµСЂС‹Р№";
 										}
 										else if (dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor == Color::IndianRed) {
-											str_solder = "ИндийскийКрасный";
+											str_solder = "РРЅРґРёР№СЃРєРёР№РљСЂР°СЃРЅС‹Р№";
 										}
 										else if (dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor == Color::YellowGreen) {
-											str_solder = "Желто-Зеленый";
+											str_solder = "Р–РµР»С‚Рѕ-Р—РµР»РµРЅС‹Р№";
 										}
 										else if (dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor == Color::Cyan) {
-											str_solder = "Голубой";
+											str_solder = "Р“РѕР»СѓР±РѕР№";
 										}
 										else if (dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor == Color::Gold) {
-											str_solder = "Золотой";
+											str_solder = "Р—РѕР»РѕС‚РѕР№";
 										}
 										else if (dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor == Color::Khaki) {
-											str_solder = "Каши";
+											str_solder = "РљР°С€Рё";
 										}
 										else if (dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor == Color::Orange) {
-											str_solder = "Ораньжевый";
+											str_solder = "РћСЂР°РЅСЊР¶РµРІС‹Р№";
 										}
 										else if (dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor == Color::Red) {
-											str_solder = "Красный";
+											str_solder = "РљСЂР°СЃРЅС‹Р№";
+										}
+										else if (dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor == Color::PaleGreen) {
+											str_solder = "РџР°РјРµР»Рѕ";
 										}
 										hour->SetAttribute("color", str_solder.c_str());
 										hour = hour->NextSiblingElement("hour");
@@ -674,7 +714,7 @@ namespace Wehrmacht {
 									hour->SetAttribute("color", "");
 									hour = solder->InsertNewChildElement("hour");
 									hour->SetAttribute("date", "07:00");
-									hour->SetAttribute("text", "завтрак");
+									hour->SetAttribute("text", "Р·Р°РІС‚СЂР°Рє");
 									hour->SetAttribute("color", "");
 									hour = solder->InsertNewChildElement("hour");
 									hour->SetAttribute("date", "08:00");
@@ -702,7 +742,7 @@ namespace Wehrmacht {
 									hour->SetAttribute("color", "");
 									hour = solder->InsertNewChildElement("hour");
 									hour->SetAttribute("date", "14:00");
-									hour->SetAttribute("text", "обед");
+									hour->SetAttribute("text", "РѕР±РµРґ");
 									hour->SetAttribute("color", "");
 									hour = solder->InsertNewChildElement("hour");
 									hour->SetAttribute("date", "15:00");
@@ -722,7 +762,7 @@ namespace Wehrmacht {
 									hour->SetAttribute("color", "");
 									hour = solder->InsertNewChildElement("hour");
 									hour->SetAttribute("date", "19:00");
-									hour->SetAttribute("text", "ужин");
+									hour->SetAttribute("text", "СѓР¶РёРЅ");
 									hour->SetAttribute("color", "");
 									hour = solder->InsertNewChildElement("hour");
 									hour->SetAttribute("date", "20:00");
@@ -746,31 +786,34 @@ namespace Wehrmacht {
 										MarshalString(Convert::ToString(dataGridView1->Rows[num_solder]->Cells[num_hour]->Value), str_solder);
 										hour->SetAttribute("text", str_solder.c_str());
 										if(dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor == Color::Green) {
-											str_solder = "Зеленый";
+											str_solder = "Р—РµР»РµРЅС‹Р№";
 										}
 										else if (dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor == Color::Silver) {
-											str_solder = "Серый";
+											str_solder = "РЎРµСЂС‹Р№";
 										}
 										else if (dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor == Color::IndianRed) {
-											str_solder = "ИндийскийКрасный";
+											str_solder = "РРЅРґРёР№СЃРєРёР№РљСЂР°СЃРЅС‹Р№";
 										}
 										else if (dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor == Color::YellowGreen) {
-											str_solder = "Желто-Зеленый";
+											str_solder = "Р–РµР»С‚Рѕ-Р—РµР»РµРЅС‹Р№";
 										}
 										else if (dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor == Color::Cyan) {
-											str_solder = "Голубой";
+											str_solder = "Р“РѕР»СѓР±РѕР№";
 										}
 										else if (dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor == Color::Gold) {
-											str_solder = "Золотой";
+											str_solder = "Р—РѕР»РѕС‚РѕР№";
 										}
 										else if (dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor == Color::Khaki) {
-											str_solder = "Каши";
+											str_solder = "РљР°С€Рё";
 										}
 										else if (dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor == Color::Orange) {
-											str_solder = "Ораньжевый";
+											str_solder = "РћСЂР°РЅСЊР¶РµРІС‹Р№";
 										}
 										else if (dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor == Color::Red) {
-											str_solder = "Красный";
+											str_solder = "РљСЂР°СЃРЅС‹Р№";
+										}
+										else if (dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor == Color::PaleGreen) {
+											str_solder = "РџР°РјРµР»Рѕ";
 										}
 										hour->SetAttribute("color", str_solder.c_str());
 										hour = hour->NextSiblingElement("hour");
@@ -787,8 +830,110 @@ namespace Wehrmacht {
 			}
 		}
 		DB.SaveFile("Data_base.xml");
-		MessageBox::Show("сохранено успешно");
+		MessageBox::Show("СЃРѕС…СЂР°РЅРµРЅРѕ СѓСЃРїРµС€РЅРѕ");
 		this->Close();
+	}
+		//export in word
+	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+		try {
+			auto word = gcnew Microsoft::Office::Interop::Word::Application();
+			word->Visible = true;
+			auto t = Type::Missing;
+			auto document = word->Documents->Add(t, t, t, t);
+			word->Selection->TypeText("\t\t\t\tР“Р РђР¤РРљ РќРђР РЇР”РћР’ " + date);
+			System::Object^ t1 = Microsoft::Office::Interop::Word::WdDefaultTableBehavior::wdWord9TableBehavior;
+			System::Object^ t2 = Microsoft::Office::Interop::Word::WdAutoFitBehavior::wdAutoFitContent;
+			word->ActiveDocument->Tables->Add(word->Selection->Range, dataGridView1->RowCount, 3, t1, t2);
+			try {
+				word->ActiveDocument->Tables[1]->Cell(1, 1)->Range->InsertAfter("С„Р°РјРёР»РёСЏ Рё РёРјСЏ");
+				word->ActiveDocument->Tables[1]->Cell(1, 2)->Range->InsertAfter("РІРёРґ РЅР°СЂСЏРґР°");
+				word->ActiveDocument->Tables[1]->Cell(1, 3)->Range->InsertAfter("РІСЂРµРјСЏ");
+			}
+			catch (System::Runtime::InteropServices::COMException^ ex) {
+
+			}
+			for (int i = 1; i < dataGridView1->RowCount; i++) {
+				try {
+					word->ActiveDocument->Tables[1]->Cell(i + 1, 1)->Range->InsertAfter(
+						Convert::ToString(dataGridView1->Rows[i - 1]->Cells[0]->Value));
+					if (Convert::ToString(dataGridView1->Rows[i - 1]->Cells[1]->Value) == "СЃСѓС‚РѕС‡. РґРµР¶СѓСЂСЃС‚РІРѕ" ||
+						Convert::ToString(dataGridView1->Rows[i - 1]->Cells[1]->Value) == "СЃСѓС‚РѕС‡. РґРµР¶СѓСЂСЃС‚РІРѕ, РІС‹РїРѕР»РЅРµРЅРѕ") {
+						word->ActiveDocument->Tables[1]->Cell(i + 1, 2)->Range->InsertAfter("СЃСѓС‚РѕС‡РЅРѕРµ РґРµР¶СѓСЂСЃС‚РІРѕ");
+						word->ActiveDocument->Tables[1]->Cell(i + 1, 3)->Range->InsertAfter("РІРµСЃСЊ РґРµРЅСЊ");
+					}
+					else if (Convert::ToString(dataGridView1->Rows[i - 1]->Cells[1]->Value) == "РґСЂСѓРіРѕРµ 24 С‡." ||
+						Convert::ToString(dataGridView1->Rows[i - 1]->Cells[1]->Value) == "РґСЂСѓРіРѕРµ 24 С‡., РІС‹РїРѕР»РЅРµРЅРѕ") {
+						word->ActiveDocument->Tables[1]->Cell(i + 1, 2)->Range->InsertAfter("РґСЂСѓРіРѕРµ");
+						word->ActiveDocument->Tables[1]->Cell(i + 1, 3)->Range->InsertAfter("РІРµСЃСЊ РґРµРЅСЊ");
+					}
+					for (int num_hour = 1; num_hour < 19; num_hour++) {
+						if (Convert::ToString(dataGridView1->Rows[i - 1]->Cells[num_hour]->Value) == "РґСЂСѓРіРѕРµ 4 С‡." ||
+							Convert::ToString(dataGridView1->Rows[i - 1]->Cells[num_hour]->Value) == "РґСЂСѓРіРѕРµ 4 С‡., РІС‹РїРѕР»РЅРµРЅРѕ") {
+							word->ActiveDocument->Tables[1]->Cell(i + 1, 2)->Range->InsertAfter("РґСЂСѓРіРѕРµ");
+							String^ total = (num_hour + 5).ToString();
+							total += ".00:";
+							if (num_hour + 9 > 24) {
+								total += (num_hour + 9 - 24).ToString();
+							}
+							else {
+								total += (num_hour + 9).ToString();
+							}
+							total += ".00";
+							word->ActiveDocument->Tables[1]->Cell(i + 1, 3)->Range->InsertAfter(total);
+							break;
+						}
+						else if (Convert::ToString(dataGridView1->Rows[i - 1]->Cells[num_hour]->Value) == "РґРµР¶СѓСЂСЃС‚РІРѕ" ||
+							Convert::ToString(dataGridView1->Rows[i - 1]->Cells[num_hour]->Value) == "РґРµР¶СѓСЂСЃС‚РІРѕ, РІС‹РїРѕР»РЅРµРЅРѕ") {
+							word->ActiveDocument->Tables[1]->Cell(i + 1, 2)->Range->InsertAfter("РґРµР¶СѓСЂСЃС‚РІРѕ");
+							String^ total = (num_hour + 5).ToString();
+							total += ".00:";
+							if (num_hour + 9 > 24) {
+								total += (num_hour + 9 - 24).ToString();
+							}
+							else {
+								total += (num_hour + 9).ToString();
+							}
+							total += ".00";
+							word->ActiveDocument->Tables[1]->Cell(i + 1, 3)->Range->InsertAfter(total);
+							break;
+						}
+						else if (Convert::ToString(dataGridView1->Rows[i - 1]->Cells[num_hour]->Value) == "РіР°СЂРЅРёР·РѕРЅ" ||
+							Convert::ToString(dataGridView1->Rows[i - 1]->Cells[num_hour]->Value) == "РіР°СЂРЅРёР·РѕРЅ, РІС‹РїРѕР»РЅРµРЅРѕ") {
+							word->ActiveDocument->Tables[1]->Cell(i + 1, 2)->Range->InsertAfter("РіР°СЂРЅРёР·РѕРЅ");
+							String^ total = (num_hour + 5).ToString();
+							total += ".00:";
+							if (num_hour + 9 > 24) {
+								total += (num_hour + 9 - 24).ToString();
+							}
+							else {
+								total += (num_hour + 9).ToString();
+							}
+							total += ".00";
+							word->ActiveDocument->Tables[1]->Cell(i + 1, 3)->Range->InsertAfter(total);
+							break;
+						}
+						else if (Convert::ToString(dataGridView1->Rows[i - 1]->Cells[num_hour]->Value) == "РґСЂСѓРіРѕРµ РґРѕ РєРѕРЅС†Р° РґРЅСЏ" ||
+							Convert::ToString(dataGridView1->Rows[i - 1]->Cells[num_hour]->Value) == "РґСЂСѓРіРѕРµ РґРѕ РєРѕРЅС†Р° РґРЅСЏ, РІС‹РїРѕР»РЅРµРЅРѕ") {
+							word->ActiveDocument->Tables[1]->Cell(i + 1, 2)->Range->InsertAfter("РґСЂСѓРіРѕРµ");
+							String^ total = (num_hour + 5).ToString();
+							total += ".00:23.00";
+							word->ActiveDocument->Tables[1]->Cell(i + 1, 3)->Range->InsertAfter(total);
+							break;
+						}
+					}
+				}
+				catch (System::Runtime::InteropServices::COMException^ ex) {
+					i--;
+				}
+			}
+			Object^ t3 = Microsoft::Office::Interop::Word::WdUnits::wdLine;
+			Int32^ str8 = 8;
+			word->Selection->MoveDown(t3, str8, t);
+			Object^ filenName = "Р“СЂР°С„РёРє РќР°СЂСЏРґРѕРІ.docx";
+			word->ActiveDocument->SaveAs(filenName, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t);
+		}
+		catch (System::Exception^ e) {
+		}
 	}
 };
 }
