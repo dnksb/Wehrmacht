@@ -10,6 +10,6 @@ int main() {
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
 	Wehrmacht::main_menu form;
+	form.read_from_database();
 	Application::Run(% form);
-
 }

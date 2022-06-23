@@ -120,6 +120,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main_menu.cpp" />
+    <ClCompile Include="tinyxml2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AddNaryad.h">
@@ -140,6 +141,7 @@
     <ClInclude Include="settings.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="tinyxml2.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AddNaryad.resx">
@@ -160,6 +162,9 @@
     <EmbeddedResource Include="settings.resx">
       <DependentUpon>settings.h</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="Data_base.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

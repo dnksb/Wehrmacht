@@ -1,5 +1,7 @@
 #pragma once
 #include "AddNaryad.h"
+#include "tinyxml2.h"
+#include <iostream>
 
 namespace Wehrmacht {
 
@@ -37,28 +39,7 @@ namespace Wehrmacht {
 		}
 	public: System::Windows::Forms::DataGridView^ dataGridView1;
 	private: System::Windows::Forms::Button^ button4;
-
-
 	private: System::Windows::Forms::Button^ button3;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
@@ -79,50 +60,6 @@ namespace Wehrmacht {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column17;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column18;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column19;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	protected:
-
 	private:
 		/// <summary>
 		/// Обязательная переменная конструктора.
@@ -137,9 +74,6 @@ namespace Wehrmacht {
 		void InitializeComponent(void)
 		{
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
-			this->button4 = (gcnew System::Windows::Forms::Button());
-			this->button3 = (gcnew System::Windows::Forms::Button());
-			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
@@ -159,6 +93,9 @@ namespace Wehrmacht {
 			this->Column17 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column18 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column19 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->button4 = (gcnew System::Windows::Forms::Button());
+			this->button3 = (gcnew System::Windows::Forms::Button());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -175,38 +112,6 @@ namespace Wehrmacht {
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->Size = System::Drawing::Size(743, 536);
 			this->dataGridView1->TabIndex = 1;
-			// 
-			// button4
-			// 
-			this->button4->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
-			this->button4->Location = System::Drawing::Point(762, 13);
-			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(110, 36);
-			this->button4->TabIndex = 8;
-			this->button4->Text = L"добавить мероприятие";
-			this->button4->UseVisualStyleBackColor = true;
-			this->button4->Click += gcnew System::EventHandler(this, &day_options::button4_Click);
-			// 
-			// button3
-			// 
-			this->button3->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
-			this->button3->Location = System::Drawing::Point(762, 55);
-			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(110, 47);
-			this->button3->TabIndex = 9;
-			this->button3->Text = L"сохранить расписание и выйти";
-			this->button3->UseVisualStyleBackColor = true;
-			// 
-			// button1
-			// 
-			this->button1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
-			this->button1->Location = System::Drawing::Point(763, 109);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(109, 60);
-			this->button1->TabIndex = 10;
-			this->button1->Text = L"отметить как выполненое выделеное задание";
-			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &day_options::button1_Click_1);
 			// 
 			// Column1
 			// 
@@ -358,6 +263,39 @@ namespace Wehrmacht {
 			this->Column19->ReadOnly = true;
 			this->Column19->Width = 59;
 			// 
+			// button4
+			// 
+			this->button4->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
+			this->button4->Location = System::Drawing::Point(762, 13);
+			this->button4->Name = L"button4";
+			this->button4->Size = System::Drawing::Size(110, 36);
+			this->button4->TabIndex = 8;
+			this->button4->Text = L"добавить мероприятие";
+			this->button4->UseVisualStyleBackColor = true;
+			this->button4->Click += gcnew System::EventHandler(this, &day_options::button4_Click);
+			// 
+			// button3
+			// 
+			this->button3->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
+			this->button3->Location = System::Drawing::Point(762, 55);
+			this->button3->Name = L"button3";
+			this->button3->Size = System::Drawing::Size(110, 47);
+			this->button3->TabIndex = 9;
+			this->button3->Text = L"сохранить расписание и выйти";
+			this->button3->UseVisualStyleBackColor = true;
+			this->button3->Click += gcnew System::EventHandler(this, &day_options::button3_Click);
+			// 
+			// button1
+			// 
+			this->button1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
+			this->button1->Location = System::Drawing::Point(763, 109);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(109, 60);
+			this->button1->TabIndex = 10;
+			this->button1->Text = L"отметить как выполненое выделеное задание";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &day_options::button1_Click_1);
+			// 
 			// day_options
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -377,8 +315,65 @@ namespace Wehrmacht {
 		}
 #pragma endregion
 		public:
-			String^* solders;
+			String^ date;
+	private: void MarshalString(String^ s, std::string& os) {
+		using namespace Runtime::InteropServices;
+		const char* chars =
+			(const char*)(Marshal::StringToHGlobalAnsi(s)).ToPointer();
+		os = chars;
+		Marshal::FreeHGlobal(IntPtr((void*)chars));
+	}
 			//add event
+	public: void read_for_DB(tinyxml2::XMLElement* day) {
+		tinyxml2::XMLElement* solder = day->FirstChildElement("solder");
+		while (solder!=NULL) {
+			std::string name = solder->Attribute("name");
+			System::String^ s = gcnew System::String(name.c_str());
+			for (int num_solder = 0; num_solder < dataGridView1->RowCount; num_solder++) {
+				if (Convert::ToString(dataGridView1->Rows[num_solder]->Cells[0]->Value) == s) {
+					tinyxml2::XMLElement* hour = solder->FirstChildElement("hour");
+					if(hour != NULL) {
+						for (int num_hour = 1; num_hour < 19; num_hour++) {
+							std::string str_hour = hour->Attribute("text");
+							System::String^ s = gcnew System::String(str_hour.c_str());
+							dataGridView1->Rows[num_solder]->Cells[num_hour]->Value = s;
+							if ((std::string)hour->Attribute("color") == "Зеленый") {
+								dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor = Color::Green;
+							}
+							else if ((std::string)hour->Attribute("color") == "Серый") {
+								dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor = Color::Silver;
+							}
+							else if ((std::string)hour->Attribute("color") == "ИндийскийКрасный") {
+								dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor = Color::IndianRed;
+							}
+							else if ((std::string)hour->Attribute("color") == "Желто-Зеленый") {
+								dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor = Color::YellowGreen;
+							}
+							else if ((std::string)hour->Attribute("color") == "Голубой") {
+								dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor = Color::Cyan;
+							}
+							else if ((std::string)hour->Attribute("color") == "Золотой") {
+								dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor = Color::Gold;
+							}
+							else if ((std::string)hour->Attribute("color") == "Каши") {
+								dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor = Color::Khaki;
+							}
+							else if ((std::string)hour->Attribute("color") == "Ораньжевый") {
+								dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor = Color::Orange;
+							}
+							else if ((std::string)hour->Attribute("color") == "Красный" || 
+								(std::string)hour->Attribute("color") == "отсутсвует") {
+								dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor = Color::Red;
+							}
+							hour = hour->NextSiblingElement("hour");
+						}
+						break;
+					}
+				}
+			}
+			solder = solder->NextSiblingElement("solder");
+		}
+	}
 	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
 		AddNaryad naryad;
 		naryad.ShowDialog();
@@ -603,17 +598,197 @@ namespace Wehrmacht {
 			return;
 		}
 	}
-private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^ e) {
-	for (int x = 1; x < 19; x++) {
-		for (int y = 0; y < dataGridView1->RowCount; y++) {
-			if (dataGridView1->Rows[y]->Cells[x]->Selected && 
-				Convert::ToString(dataGridView1->Rows[y]->Cells[x]->Value) != "" && 
-				dataGridView1->Rows[y]->Cells[x]->Style->BackColor != Color::PaleGreen) {
-				dataGridView1->Rows[y]->Cells[x]->Style->BackColor = Color::PaleGreen;
-				dataGridView1->Rows[y]->Cells[x]->Value = Convert::ToString(dataGridView1->Rows[y]->Cells[x]->Value) + ", выполено";
+	private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^ e) {
+		for (int x = 1; x < 19; x++) {
+			for (int y = 0; y < dataGridView1->RowCount; y++) {
+				if (dataGridView1->Rows[y]->Cells[x]->Selected &&
+					Convert::ToString(dataGridView1->Rows[y]->Cells[x]->Value) != "" &&
+					dataGridView1->Rows[y]->Cells[x]->Style->BackColor != Color::PaleGreen) {
+					if (dataGridView1->Rows[y]->Cells[x]->Style->BackColor != Color::Red && 
+						Convert::ToString(dataGridView1->Rows[y]->Cells[x]->Value) != "отсутсвует") {
+						dataGridView1->Rows[y]->Cells[x]->Style->BackColor = Color::PaleGreen;
+						dataGridView1->Rows[y]->Cells[x]->Value = Convert::ToString(dataGridView1->Rows[y]->Cells[x]->Value) + ", выполено";
+					}
+				}
 			}
 		}
 	}
-}
+		//save DB
+	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+		tinyxml2::XMLDocument DB("Data_base.xml");
+		if (DB.LoadFile("Data_base.xml") == tinyxml2::XML_SUCCESS) {
+			tinyxml2::XMLElement* day = DB.FirstChildElement("days");
+			day = day->FirstChildElement("day");
+			while (day != NULL) {
+				std::string time = day->Attribute("date");
+				System::String^ s = gcnew System::String(time.c_str());
+				if (date == s) {
+					tinyxml2::XMLElement* solder = day->FirstChildElement("solder");
+					while (solder != NULL) {
+						std::string name = solder->Attribute("name");
+						System::String^ s = gcnew System::String(name.c_str());
+						for (int num_solder = 0; num_solder < dataGridView1->RowCount; num_solder++) {
+							if (Convert::ToString(dataGridView1->Rows[num_solder]->Cells[0]->Value) == s) {
+								tinyxml2::XMLElement* hour = solder->FirstChildElement("hour");
+								if (hour != NULL) {
+									for (int num_hour = 1; num_hour < 19; num_hour++) {
+										std::string str_solder;
+										MarshalString(Convert::ToString(dataGridView1->Rows[num_solder]->Cells[num_hour]->Value), str_solder);
+										hour->SetAttribute("text", str_solder.c_str());
+										if (dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor == Color::Green) {
+											str_solder = "Зеленый";
+										}
+										else if (dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor == Color::Silver) {
+											str_solder = "Серый";
+										}
+										else if (dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor == Color::IndianRed) {
+											str_solder = "ИндийскийКрасный";
+										}
+										else if (dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor == Color::YellowGreen) {
+											str_solder = "Желто-Зеленый";
+										}
+										else if (dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor == Color::Cyan) {
+											str_solder = "Голубой";
+										}
+										else if (dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor == Color::Gold) {
+											str_solder = "Золотой";
+										}
+										else if (dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor == Color::Khaki) {
+											str_solder = "Каши";
+										}
+										else if (dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor == Color::Orange) {
+											str_solder = "Ораньжевый";
+										}
+										else if (dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor == Color::Red) {
+											str_solder = "Красный";
+										}
+										hour->SetAttribute("color", str_solder.c_str());
+										hour = hour->NextSiblingElement("hour");
+									}
+									break;
+								}
+								else {
+									hour = solder->InsertNewChildElement("hour");
+									hour->SetAttribute("date", "06:00");
+									hour->SetAttribute("text", "");
+									hour->SetAttribute("color", "");
+									hour = solder->InsertNewChildElement("hour");
+									hour->SetAttribute("date", "07:00");
+									hour->SetAttribute("text", "завтрак");
+									hour->SetAttribute("color", "");
+									hour = solder->InsertNewChildElement("hour");
+									hour->SetAttribute("date", "08:00");
+									hour->SetAttribute("text", "");
+									hour->SetAttribute("color", "");
+									hour = solder->InsertNewChildElement("hour");
+									hour->SetAttribute("date", "09:00");
+									hour->SetAttribute("text", "");
+									hour->SetAttribute("color", "");
+									hour = solder->InsertNewChildElement("hour");
+									hour->SetAttribute("date", "10:00");
+									hour->SetAttribute("text", "");
+									hour->SetAttribute("color", "");
+									hour = solder->InsertNewChildElement("hour");
+									hour->SetAttribute("date", "11:00");
+									hour->SetAttribute("text", "");
+									hour->SetAttribute("color", "");
+									hour = solder->InsertNewChildElement("hour");
+									hour->SetAttribute("date", "12:00");
+									hour->SetAttribute("text", "");
+									hour->SetAttribute("color", "");
+									hour = solder->InsertNewChildElement("hour");
+									hour->SetAttribute("date", "13:00");
+									hour->SetAttribute("text", "");
+									hour->SetAttribute("color", "");
+									hour = solder->InsertNewChildElement("hour");
+									hour->SetAttribute("date", "14:00");
+									hour->SetAttribute("text", "обед");
+									hour->SetAttribute("color", "");
+									hour = solder->InsertNewChildElement("hour");
+									hour->SetAttribute("date", "15:00");
+									hour->SetAttribute("text", "");
+									hour->SetAttribute("color", "");
+									hour = solder->InsertNewChildElement("hour");
+									hour->SetAttribute("date", "16:00");
+									hour->SetAttribute("text", "");
+									hour->SetAttribute("color", "");
+									hour = solder->InsertNewChildElement("hour");
+									hour->SetAttribute("date", "17:00");
+									hour->SetAttribute("text", "");
+									hour->SetAttribute("color", "");
+									hour = solder->InsertNewChildElement("hour");
+									hour->SetAttribute("date", "18:00");
+									hour->SetAttribute("text", "");
+									hour->SetAttribute("color", "");
+									hour = solder->InsertNewChildElement("hour");
+									hour->SetAttribute("date", "19:00");
+									hour->SetAttribute("text", "ужин");
+									hour->SetAttribute("color", "");
+									hour = solder->InsertNewChildElement("hour");
+									hour->SetAttribute("date", "20:00");
+									hour->SetAttribute("text", "");
+									hour->SetAttribute("color", "");
+									hour = solder->InsertNewChildElement("hour");
+									hour->SetAttribute("date", "21:00");
+									hour->SetAttribute("text", "");
+									hour->SetAttribute("color", "");
+									hour = solder->InsertNewChildElement("hour");
+									hour->SetAttribute("date", "22:00");
+									hour->SetAttribute("text", "");
+									hour->SetAttribute("color", "");
+									hour = solder->InsertNewChildElement("hour");
+									hour->SetAttribute("date", "23:00");
+									hour->SetAttribute("text", "");
+									hour->SetAttribute("color", "");
+									hour = solder->FirstChildElement("hour");
+									for (int num_hour = 1; num_hour < 19; num_hour++) {
+										std::string str_solder;
+										MarshalString(Convert::ToString(dataGridView1->Rows[num_solder]->Cells[num_hour]->Value), str_solder);
+										hour->SetAttribute("text", str_solder.c_str());
+										if(dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor == Color::Green) {
+											str_solder = "Зеленый";
+										}
+										else if (dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor == Color::Silver) {
+											str_solder = "Серый";
+										}
+										else if (dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor == Color::IndianRed) {
+											str_solder = "ИндийскийКрасный";
+										}
+										else if (dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor == Color::YellowGreen) {
+											str_solder = "Желто-Зеленый";
+										}
+										else if (dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor == Color::Cyan) {
+											str_solder = "Голубой";
+										}
+										else if (dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor == Color::Gold) {
+											str_solder = "Золотой";
+										}
+										else if (dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor == Color::Khaki) {
+											str_solder = "Каши";
+										}
+										else if (dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor == Color::Orange) {
+											str_solder = "Ораньжевый";
+										}
+										else if (dataGridView1->Rows[num_solder]->Cells[num_hour]->Style->BackColor == Color::Red) {
+											str_solder = "Красный";
+										}
+										hour->SetAttribute("color", str_solder.c_str());
+										hour = hour->NextSiblingElement("hour");
+									}
+									break;
+								}
+							}
+						}
+						solder = solder->NextSiblingElement("solder");
+					}
+					break;
+				}
+				day = day->NextSiblingElement("day");
+			}
+		}
+		DB.SaveFile("Data_base.xml");
+		MessageBox::Show("сохранено успешно");
+		this->Close();
+	}
 };
 }

@@ -4,6 +4,8 @@
 #include "InputNameSolder.h"
 #include "InputDay.h"
 #include <Windows.h>
+#include "tinyxml2.h"
+#include <iostream>
 
 namespace Wehrmacht {
 
@@ -47,20 +49,7 @@ namespace Wehrmacht {
 	private: System::Windows::Forms::Button^ button3;
 	private: System::Windows::Forms::Button^ button5;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	private: System::Windows::Forms::Button^ button6;
 	private:
 		/// <summary>
 		/// Обязательная переменная конструктора.
@@ -76,12 +65,13 @@ namespace Wehrmacht {
 		{
 			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->button5 = (gcnew System::Windows::Forms::Button());
-			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->button6 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -93,6 +83,15 @@ namespace Wehrmacht {
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->Size = System::Drawing::Size(744, 536);
 			this->dataGridView1->TabIndex = 0;
+			// 
+			// Column1
+			// 
+			dataGridViewCellStyle1->BackColor = System::Drawing::Color::White;
+			this->Column1->DefaultCellStyle = dataGridViewCellStyle1;
+			this->Column1->HeaderText = L"фамилия и имя солдата";
+			this->Column1->Name = L"Column1";
+			this->Column1->ReadOnly = true;
+			this->Column1->ToolTipText = L"столбец с фамилиями солдатов";
 			// 
 			// button1
 			// 
@@ -125,7 +124,6 @@ namespace Wehrmacht {
 			this->button4->TabIndex = 4;
 			this->button4->Text = L"создать отчет";
 			this->button4->UseVisualStyleBackColor = true;
-			this->button4->Click += gcnew System::EventHandler(this, &main_menu::button4_Click);
 			// 
 			// button3
 			// 
@@ -149,20 +147,22 @@ namespace Wehrmacht {
 			this->button5->UseVisualStyleBackColor = true;
 			this->button5->Click += gcnew System::EventHandler(this, &main_menu::button5_Click);
 			// 
-			// Column1
+			// button6
 			// 
-			dataGridViewCellStyle1->BackColor = System::Drawing::Color::White;
-			this->Column1->DefaultCellStyle = dataGridViewCellStyle1;
-			this->Column1->HeaderText = L"фамилия и имя солдата";
-			this->Column1->Name = L"Column1";
-			this->Column1->ReadOnly = true;
-			this->Column1->ToolTipText = L"столбец с фамилиями солдатов";
+			this->button6->Location = System::Drawing::Point(764, 131);
+			this->button6->Name = L"button6";
+			this->button6->Size = System::Drawing::Size(106, 23);
+			this->button6->TabIndex = 7;
+			this->button6->Text = L"сохранить";
+			this->button6->UseVisualStyleBackColor = true;
+			this->button6->Click += gcnew System::EventHandler(this, &main_menu::button6_Click);
 			// 
 			// main_menu
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(884, 561);
+			this->Controls->Add(this->button6);
 			this->Controls->Add(this->button5);
 			this->Controls->Add(this->button3);
 			this->Controls->Add(this->button4);
@@ -183,11 +183,67 @@ namespace Wehrmacht {
 		int amount_solders = 0;
 		int amount_tidy_solders = 3;
 		int first_tidy_solder = 1;
-	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
-
+		//read and add items from DB
+	public: void read_from_database() {
+		tinyxml2::XMLDocument DB("Data_base.xml");
+		if (DB.LoadFile("Data_base.xml") == tinyxml2::XML_SUCCESS) {
+			tinyxml2::XMLElement* solder = DB.FirstChildElement("days");
+			solder = solder->FirstChildElement("day");
+			solder = solder->FirstChildElement("solder");
+			while (solder != NULL) {
+				std::string name = solder->Attribute("name");
+				System::String^ s = gcnew System::String(name.c_str());
+				add_solder(s);
+				solder = solder->NextSiblingElement("solder");
+			}
+			tinyxml2::XMLElement* day = DB.FirstChildElement("days");
+			day = day->FirstChildElement("day");
+			while (day != NULL) {
+				std::string time = day->Attribute("date");
+				System::String^ s = gcnew System::String(time.c_str());
+				add_day(s);
+				day = day->NextSiblingElement("day");
+			}
+		}
 	}
-		   //add solder
+	private: void MarshalString(String^ s, std::string& os) {
+		using namespace Runtime::InteropServices;
+		const char* chars =
+			(const char*)(Marshal::StringToHGlobalAnsi(s)).ToPointer();
+		os = chars;
+		Marshal::FreeHGlobal(IntPtr((void*)chars));
+	}
+		//update place
+	private: void update_place() {
+		for (int i = 0; i < amount_day; i++) {
+			for (int j = 0; j < amount_solders; j++) {
+				dataGridView1->Columns[i]->DefaultCellStyle->BackColor = Color::White;
+			}
+		}
+		for (int i = 0; i < amount_solders; i++) {
+			for (int j = 0; j < amount_day + 1; j++) {
+				if (Convert::ToString(dataGridView1->Rows[i]->Cells[j]->Value) == "о" ||
+					Convert::ToString(dataGridView1->Rows[i]->Cells[j]->Value) == "О") {
+					dataGridView1->Rows[i]->Cells[j]->Style->BackColor = Color::Red;
+				}
+			}
+		}
+	}
+		//add day from DB
+	private: void add_day(String^ day) {
+		update_place();
+		dataGridView1->Columns->Add(amount_day++.ToString(), day);
+	}
+		//add solder from file
+	private: void add_solder(String^ solder) {
+		update_place();
+		dataGridView1->Rows->Add(solder);
+		amount_solders++;
+		dataGridView1->Sort(dataGridView1->Columns[0], ListSortDirection::Ascending);
+	}
+		//add solder
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+		update_place();
 		InputNameSolder window;
 		window.ShowDialog();
 		if (window.name != "") {
@@ -199,162 +255,427 @@ namespace Wehrmacht {
 			return;
 		}
 	}
-		   //add day
-private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	InputDay day;
-	day.ShowDialog();
-	if (day.day != 0 && day.month != 0) {
-		int num_day = day.day;
-		int num_month = day.month;
-		switch (num_month)
-		{
-		case 1:
-			if (num_day > 31) {
-				MessageBox::Show("неправильно введен день");
-				return;
-			}
-			break;
-		case 2:
-			if (num_day > 28) {
-				MessageBox::Show("неправильно введен день");
-				return;
-			}
-			break;
-		case 3:
-			if (num_day > 31) {
-				MessageBox::Show("неправильно введен день");
-				return;
-			}
-			break;
-		case 4:
-			if (num_day > 30) {
-				MessageBox::Show("неправильно введен день");
-				return;
-			}
-			break;
-		case 5:
-			if (num_day > 31) {
-				MessageBox::Show("неправильно введен день");
-				return;
-			}
-			break;
-		case 6:
-			if (num_day > 30) {
-				MessageBox::Show("неправильно введен день");
-				return;
-			}
-			break;
-		case 7:
-			if (num_day > 31) {
-				MessageBox::Show("неправильно введен день");
-				return;
-			}
-			break;
-		case 8:
-			if (num_day > 31) {
-				MessageBox::Show("неправильно введен день");
-				return;
-			}
-			break;
-		case 9:
-			if (num_day > 30) {
-				MessageBox::Show("неправильно введен день");
-				return;
-			}
-			break;
-		case 10:
-			if (num_day > 31) {
-				MessageBox::Show("неправильно введен день");
-				return;
-			}
-			break;
-		case 11:
-			if (num_day > 30) {
-				MessageBox::Show("неправильно введен день");
-				return;
-			}
-			break;
-		case 12:
-			if (num_day > 31) {
-				MessageBox::Show("неправильно введен день");
-				return;
-			}
-			break;
-		default:
-			MessageBox::Show("неправильно введен месяц");
-			return;
-			break;
-		}
-		for (int i = 0; i < amount_day; i++) {
-			for (int j = 0; j < amount_solders; j++) {
-				dataGridView1->Columns[i]->DefaultCellStyle->BackColor = Color::White;
-			}
-		}
-		for (int i = 0; i < amount_solders; i++) {
-			for (int j = 0; j < amount_day + 1; j++) {
-				if (Convert::ToString(dataGridView1->Rows[i]->Cells[j]->Value) == "о"|| 
-					Convert::ToString(dataGridView1->Rows[i]->Cells[j]->Value) == "О") {
-					dataGridView1->Rows[i]->Cells[j]->Style->BackColor = Color::Red;
+		//add day
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		update_place();
+		InputDay day;
+		day.ShowDialog();
+		if (day.day != 0 && day.month != 0) {
+			int num_day = day.day;
+			int num_month = day.month;
+			switch (num_month)
+			{
+			case 1:
+				if (num_day > 31) {
+					MessageBox::Show("неправильно введен день");
+					return;
 				}
-			}
-		}
-		dataGridView1->Columns->Add(amount_day++.ToString(), num_day.ToString() + "." + num_month.ToString());
-	}
-	else {
-		MessageBox::Show("вы не ввели месяц или день");
-	}
-}
-	   //day settings
-private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
-	InputDay choice;
-	choice.ShowDialog();
-	if (choice.day != 0 && choice.month != 0) {
-		int num_day = choice.day;
-		int num_month = choice.month;
-		bool found = false;
-		int choice_day;
-		for (int i = 0; i < amount_day + 1; i++) {
-			if (Convert::ToString(dataGridView1->Columns[i]->HeaderCell->Value) == 
-				(num_day.ToString() + "." + num_month.ToString())->ToString()) {
-				choice_day = i;
-				found = true;
+				break;
+			case 2:
+				if (num_day > 28) {
+					MessageBox::Show("неправильно введен день");
+					return;
+				}
+				break;
+			case 3:
+				if (num_day > 31) {
+					MessageBox::Show("неправильно введен день");
+					return;
+				}
+				break;
+			case 4:
+				if (num_day > 30) {
+					MessageBox::Show("неправильно введен день");
+					return;
+				}
+				break;
+			case 5:
+				if (num_day > 31) {
+					MessageBox::Show("неправильно введен день");
+					return;
+				}
+				break;
+			case 6:
+				if (num_day > 30) {
+					MessageBox::Show("неправильно введен день");
+					return;
+				}
+				break;
+			case 7:
+				if (num_day > 31) {
+					MessageBox::Show("неправильно введен день");
+					return;
+				}
+				break;
+			case 8:
+				if (num_day > 31) {
+					MessageBox::Show("неправильно введен день");
+					return;
+				}
+				break;
+			case 9:
+				if (num_day > 30) {
+					MessageBox::Show("неправильно введен день");
+					return;
+				}
+				break;
+			case 10:
+				if (num_day > 31) {
+					MessageBox::Show("неправильно введен день");
+					return;
+				}
+				break;
+			case 11:
+				if (num_day > 30) {
+					MessageBox::Show("неправильно введен день");
+					return;
+				}
+				break;
+			case 12:
+				if (num_day > 31) {
+					MessageBox::Show("неправильно введен день");
+					return;
+				}
+				break;
+			default:
+				MessageBox::Show("неправильно введен месяц");
+				return;
 				break;
 			}
-		}
-		if (found) {
-			day_options day;
-			this->Hide();
-			for (int solder = 0; solder < amount_solders; solder++) {
-				day.dataGridView1->Rows->Add(this->dataGridView1->Rows[solder]->Cells[0]->Value);
-				if (Convert::ToString(dataGridView1->Rows[solder]->Cells[choice_day]->Value) == "о" || 
-					Convert::ToString(dataGridView1->Rows[solder]->Cells[choice_day]->Value) == "О") {
-					day.dataGridView1->Rows[solder]->DefaultCellStyle->BackColor = Color::Red;
+			for (int i = 0; i < amount_day; i++) {
+				for (int j = 0; j < amount_solders; j++) {
+					dataGridView1->Columns[i]->DefaultCellStyle->BackColor = Color::White;
 				}
 			}
-			for (int solder = 0; solder < amount_solders; solder++) {
-				day.dataGridView1->Rows[solder]->Cells[2]->Value = "завтрак";
-				day.dataGridView1->Rows[solder]->Cells[9]->Value = "обед";
-				day.dataGridView1->Rows[solder]->Cells[14]->Value = "ужин";
-				day.dataGridView1->Rows[solder]->Cells[2]->Style->BackColor = Color::Gold;
-				day.dataGridView1->Rows[solder]->Cells[9]->Style->BackColor = Color::Khaki;
-				day.dataGridView1->Rows[solder]->Cells[14]->Style->BackColor = Color::Orange;
+			for (int i = 0; i < amount_solders; i++) {
+				for (int j = 0; j < amount_day + 1; j++) {
+					if (Convert::ToString(dataGridView1->Rows[i]->Cells[j]->Value) == "о" ||
+						Convert::ToString(dataGridView1->Rows[i]->Cells[j]->Value) == "О") {
+						dataGridView1->Rows[i]->Cells[j]->Style->BackColor = Color::Red;
+					}
+				}
 			}
-			day.ShowDialog();
-			this->Show();
-			for (int solder = 0; solder < amount_solders; solder++) {
-				dataGridView1->Rows[solder]->ReadOnly = false;
-			}
+			dataGridView1->Columns->Add(amount_day++.ToString(), num_day.ToString() + "." + num_month.ToString());
 		}
 		else {
-			MessageBox::Show("такой день не найден");
-			return;
+			MessageBox::Show("вы не ввели месяц или день");
 		}
 	}
-}
-	   //settings
-private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
-	settings window;
-	window.ShowDialog();
-}
+		//day settings
+	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+		update_place();
+		tinyxml2::XMLDocument DB("Data_base.xml");
+		if (DB.LoadFile("Data_base.xml") == tinyxml2::XML_SUCCESS) {
+			tinyxml2::XMLElement* day = DB.FirstChildElement("days");
+			for (int num_day = 1; num_day < amount_day + 1; num_day++) {
+				day = day->FirstChildElement("day");
+				bool found = false;
+				while (day != NULL) {
+					std::string time = day->Attribute("date");
+					System::String^ s = gcnew System::String(time.c_str());
+					if (Convert::ToString(dataGridView1->Columns[num_day]->HeaderCell->Value) == s) {
+						found = true;
+					}
+					day = day->NextSiblingElement("day");
+				}
+				if (!found) {
+					day = DB.FirstChildElement("days");
+					day = day->InsertNewChildElement("day");
+					std::string str_day;
+					MarshalString(Convert::ToString(dataGridView1->Columns[num_day]->HeaderCell->Value), str_day);
+					day->SetAttribute("date", str_day.c_str());
+				}
+				day = DB.FirstChildElement("days");
+			}
+			tinyxml2::XMLElement* solder = DB.FirstChildElement("days");
+			day = solder->FirstChildElement("day");
+			while (day != NULL) {
+				for (int num_solder = 0; num_solder < amount_solders; num_solder++) {
+					solder = day->FirstChildElement("solder");
+					bool found = false;
+					while (solder != NULL) {
+						std::string name = solder->Attribute("name");
+						System::String^ s = gcnew System::String(name.c_str());
+						if (Convert::ToString(dataGridView1->Rows[num_solder]->Cells[0]->Value) == s) {
+							found = true;
+						}
+						solder = solder->NextSiblingElement("solder");
+					}
+					if (!found) {
+						solder = day->InsertNewChildElement("solder");
+						std::string str_solder;
+						MarshalString(Convert::ToString(dataGridView1->Rows[num_solder]->Cells[0]->Value), str_solder);
+						solder->SetAttribute("name", str_solder.c_str());
+						tinyxml2::XMLElement* hour;
+						hour = solder->InsertNewChildElement("hour");
+						hour->SetAttribute("date", "06:00");
+						hour->SetAttribute("text", "");
+						hour->SetAttribute("color", "");
+						hour = solder->InsertNewChildElement("hour");
+						hour->SetAttribute("date", "07:00");
+						hour->SetAttribute("text", "завтрак");
+						hour->SetAttribute("color", "");
+						hour = solder->InsertNewChildElement("hour");
+						hour->SetAttribute("date", "08:00");
+						hour->SetAttribute("text", "");
+						hour->SetAttribute("color", "");
+						hour = solder->InsertNewChildElement("hour");
+						hour->SetAttribute("date", "09:00");
+						hour->SetAttribute("text", "");
+						hour->SetAttribute("color", "");
+						hour = solder->InsertNewChildElement("hour");
+						hour->SetAttribute("date", "10:00");
+						hour->SetAttribute("text", "");
+						hour->SetAttribute("color", "");
+						hour = solder->InsertNewChildElement("hour");
+						hour->SetAttribute("date", "11:00");
+						hour->SetAttribute("text", "");
+						hour->SetAttribute("color", "");
+						hour = solder->InsertNewChildElement("hour");
+						hour->SetAttribute("date", "12:00");
+						hour->SetAttribute("text", "");
+						hour->SetAttribute("color", "");
+						hour = solder->InsertNewChildElement("hour");
+						hour->SetAttribute("date", "13:00");
+						hour->SetAttribute("text", "");
+						hour->SetAttribute("color", "");
+						hour = solder->InsertNewChildElement("hour");
+						hour->SetAttribute("date", "14:00");
+						hour->SetAttribute("text", "обед");
+						hour->SetAttribute("color", "");
+						hour = solder->InsertNewChildElement("hour");
+						hour->SetAttribute("date", "15:00");
+						hour->SetAttribute("text", "");
+						hour->SetAttribute("color", "");
+						hour = solder->InsertNewChildElement("hour");
+						hour->SetAttribute("date", "16:00");
+						hour->SetAttribute("text", "");
+						hour->SetAttribute("color", "");
+						hour = solder->InsertNewChildElement("hour");
+						hour->SetAttribute("date", "17:00");
+						hour->SetAttribute("text", "");
+						hour->SetAttribute("color", "");
+						hour = solder->InsertNewChildElement("hour");
+						hour->SetAttribute("date", "18:00");
+						hour->SetAttribute("text", "");
+						hour->SetAttribute("color", "");
+						hour = solder->InsertNewChildElement("hour");
+						hour->SetAttribute("date", "19:00");
+						hour->SetAttribute("text", "ужин");
+						hour->SetAttribute("color", "");
+						hour = solder->InsertNewChildElement("hour");
+						hour->SetAttribute("date", "20:00");
+						hour->SetAttribute("text", "");
+						hour->SetAttribute("color", "");
+						hour = solder->InsertNewChildElement("hour");
+						hour->SetAttribute("date", "21:00");
+						hour->SetAttribute("text", "");
+						hour->SetAttribute("color", "");
+						hour = solder->InsertNewChildElement("hour");
+						hour->SetAttribute("date", "22:00");
+						hour->SetAttribute("text", "");
+						hour->SetAttribute("color", "");
+						hour = solder->InsertNewChildElement("hour");
+						hour->SetAttribute("date", "23:00");
+						hour->SetAttribute("text", "");
+						hour->SetAttribute("color", "");
+					}
+				}
+				day = day->NextSiblingElement("day");
+			}
+		}
+		DB.SaveFile("Data_base.xml");
+		InputDay choice;
+		choice.ShowDialog();
+		if (choice.day != 0 && choice.month != 0) {
+			int num_day = choice.day;
+			int num_month = choice.month;
+			bool found = false;
+			int choice_day;
+			for (int i = 0; i < amount_day + 1; i++) {
+				if (Convert::ToString(dataGridView1->Columns[i]->HeaderCell->Value) ==
+					(num_day.ToString() + "." + num_month.ToString())->ToString()) {
+					choice_day = i;
+					found = true;
+					break;
+				}
+			}
+			if (found) {
+				day_options day;
+				for (int solder = 0; solder < amount_solders; solder++) {
+					day.dataGridView1->Rows->Add(this->dataGridView1->Rows[solder]->Cells[0]->Value);
+					day.dataGridView1->Rows[solder]->Cells[2]->Value = "завтрак";
+					day.dataGridView1->Rows[solder]->Cells[9]->Value = "обед";
+					day.dataGridView1->Rows[solder]->Cells[14]->Value = "ужин";
+					day.dataGridView1->Rows[solder]->Cells[2]->Style->BackColor = Color::Gold;
+					day.dataGridView1->Rows[solder]->Cells[9]->Style->BackColor = Color::Khaki;
+					day.dataGridView1->Rows[solder]->Cells[14]->Style->BackColor = Color::Orange;
+				}
+				day.date = (num_day.ToString() + "." + num_month.ToString())->ToString();
+				this->Hide();
+				tinyxml2::XMLElement* xml_day = DB.FirstChildElement("days");
+				xml_day = xml_day->FirstChildElement("day");
+				while (xml_day != NULL) {
+					std::string time = xml_day->Attribute("date");
+					System::String^ s = gcnew System::String(time.c_str());
+					if ((num_day.ToString() + "." + num_month.ToString())->ToString() == s) {
+						break;
+					}
+					xml_day = xml_day->NextSiblingElement("day");
+				}
+				day.read_for_DB(xml_day);
+				for (int solder = 0; solder < amount_solders; solder++) {
+					if (Convert::ToString(dataGridView1->Rows[solder]->Cells[choice_day]->Value) == "о" ||
+						Convert::ToString(dataGridView1->Rows[solder]->Cells[choice_day]->Value) == "О") {
+						day.dataGridView1->Rows[solder]->DefaultCellStyle->BackColor = Color::Red;
+						for (int i = 1; i < 19; i++) {
+							day.dataGridView1->Rows[solder]->Cells[i]->Value = "отсутсвует";
+						}
+					}
+				}
+				day.ShowDialog();
+				this->Show();
+				for (int solder = 0; solder < amount_solders; solder++) {
+					dataGridView1->Rows[solder]->ReadOnly = false;
+				}
+			}
+			else {
+				MessageBox::Show("такой день не найден");
+				return;
+			}
+		}
+	}
+		//settings
+	private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
+		update_place();
+		settings window;
+		window.ShowDialog();
+	}
+		//save DB
+	private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e) {
+		update_place();
+		tinyxml2::XMLDocument DB("Data_base.xml");
+		if (DB.LoadFile("Data_base.xml") == tinyxml2::XML_SUCCESS) {
+			tinyxml2::XMLElement* day = DB.FirstChildElement("days");
+			for (int num_day = 1; num_day < amount_day + 1; num_day++) {
+				day = day->FirstChildElement("day");
+				bool found = false;
+				while (day != NULL) {
+					std::string time = day->Attribute("date");
+					System::String^ s = gcnew System::String(time.c_str());
+					if (Convert::ToString(dataGridView1->Columns[num_day]->HeaderCell->Value) == s) {
+						found = true;
+					}
+					day = day->NextSiblingElement("day");
+				}
+				if (!found) {
+					day = DB.FirstChildElement("days");
+					day = day->InsertNewChildElement("day");
+					std::string str_day;
+					MarshalString(Convert::ToString(dataGridView1->Columns[num_day]->HeaderCell->Value), str_day);
+					day->SetAttribute("date", str_day.c_str());
+				}
+				day = DB.FirstChildElement("days");
+			}
+			tinyxml2::XMLElement* solder = DB.FirstChildElement("days");
+			day = solder->FirstChildElement("day");
+			while (day != NULL) {
+				for (int num_solder = 0; num_solder < amount_solders; num_solder++) {
+					solder = day->FirstChildElement("solder");
+					bool found = false;
+					while (solder != NULL) {
+						std::string name = solder->Attribute("name");
+						System::String^ s = gcnew System::String(name.c_str());
+						if (Convert::ToString(dataGridView1->Rows[num_solder]->Cells[0]->Value) == s) {
+							found = true;
+						}
+						solder = solder->NextSiblingElement("solder");
+					}
+					if (!found) {
+						solder = day->InsertNewChildElement("solder");
+						std::string str_solder;
+						MarshalString(Convert::ToString(dataGridView1->Rows[num_solder]->Cells[0]->Value), str_solder);
+						solder->SetAttribute("name", str_solder.c_str());
+						tinyxml2::XMLElement* hour;
+						hour = solder->InsertNewChildElement("hour");
+						hour->SetAttribute("date", "06:00");
+						hour->SetAttribute("text", "");
+						hour->SetAttribute("color", "");
+						hour = solder->InsertNewChildElement("hour");
+						hour->SetAttribute("date", "07:00");
+						hour->SetAttribute("text", "завтрак");
+						hour->SetAttribute("color", "");
+						hour = solder->InsertNewChildElement("hour");
+						hour->SetAttribute("date", "08:00");
+						hour->SetAttribute("text", "");
+						hour->SetAttribute("color", "");
+						hour = solder->InsertNewChildElement("hour");
+						hour->SetAttribute("date", "09:00");
+						hour->SetAttribute("text", "");
+						hour->SetAttribute("color", "");
+						hour = solder->InsertNewChildElement("hour");
+						hour->SetAttribute("date", "10:00");
+						hour->SetAttribute("text", "");
+						hour->SetAttribute("color", "");
+						hour = solder->InsertNewChildElement("hour");
+						hour->SetAttribute("date", "11:00");
+						hour->SetAttribute("text", "");
+						hour->SetAttribute("color", "");
+						hour = solder->InsertNewChildElement("hour");
+						hour->SetAttribute("date", "12:00");
+						hour->SetAttribute("text", "");
+						hour->SetAttribute("color", "");
+						hour = solder->InsertNewChildElement("hour");
+						hour->SetAttribute("date", "13:00");
+						hour->SetAttribute("text", "");
+						hour->SetAttribute("color", "");
+						hour = solder->InsertNewChildElement("hour");
+						hour->SetAttribute("date", "14:00");
+						hour->SetAttribute("text", "обед");
+						hour->SetAttribute("color", "");
+						hour = solder->InsertNewChildElement("hour");
+						hour->SetAttribute("date", "15:00");
+						hour->SetAttribute("text", "");
+						hour->SetAttribute("color", "");
+						hour = solder->InsertNewChildElement("hour");
+						hour->SetAttribute("date", "16:00");
+						hour->SetAttribute("text", "");
+						hour->SetAttribute("color", "");
+						hour = solder->InsertNewChildElement("hour");
+						hour->SetAttribute("date", "17:00");
+						hour->SetAttribute("text", "");
+						hour->SetAttribute("color", "");
+						hour = solder->InsertNewChildElement("hour");
+						hour->SetAttribute("date", "18:00");
+						hour->SetAttribute("text", "");
+						hour->SetAttribute("color", "");
+						hour = solder->InsertNewChildElement("hour");
+						hour->SetAttribute("date", "19:00");
+						hour->SetAttribute("text", "ужин");
+						hour->SetAttribute("color", "");
+						hour = solder->InsertNewChildElement("hour");
+						hour->SetAttribute("date", "20:00");
+						hour->SetAttribute("text", "");
+						hour->SetAttribute("color", "");
+						hour = solder->InsertNewChildElement("hour");
+						hour->SetAttribute("date", "21:00");
+						hour->SetAttribute("text", "");
+						hour->SetAttribute("color", "");
+						hour = solder->InsertNewChildElement("hour");
+						hour->SetAttribute("date", "22:00");
+						hour->SetAttribute("text", "");
+						hour->SetAttribute("color", "");
+						hour = solder->InsertNewChildElement("hour");
+						hour->SetAttribute("date", "23:00");
+						hour->SetAttribute("text", "");
+						hour->SetAttribute("color", "");
+					}
+				}
+				day = day->NextSiblingElement("day");
+			}
+		}
+		DB.SaveFile("Data_base.xml");
+		MessageBox::Show("сохранено успешно");
+	}
 };
 }
